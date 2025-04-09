@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "DM Sans", sans-serif;
+  background-color: #F4F4F4;
+
 }
 
 h1 {
@@ -240,3 +242,208 @@ h1 {
 .ui-kit-wrapper {
   margin: 20px 0;
 }
+
+/* Muscle list */
+.muscle-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.muscle-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 335px;
+  min-height: 225px;
+
+  border-radius: 12px;
+
+  background-image:
+    linear-gradient(0deg, rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)),
+    url('https://www.trainheroic.com/wp-content/uploads/2023/02/AdobeStock_166788055-TH-jpg.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.muscle-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.muscle-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.muscle-card:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.muscle-title {
+  color: #F4F4F4;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.muscle-subtitle {
+  color: rgba(244, 244, 244, 0.40);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin: 0;
+}
+
+/* Workout list */
+
+.workout-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.workout-card {
+  border-radius: 15px;
+  background: #FFF;
+
+  min-width: 335px;
+  min-height: 141px;
+
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.workout-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.workout-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.workout-card:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.workout-card-container {
+  padding: 16px;
+}
+
+.workout-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 27px;
+}
+
+.workout-badge {
+  border-radius: 15px;
+  border: 1px solid #242424;
+
+  padding: 5px 8px;
+
+  color: #242424;
+
+  font-size: 12px;
+  font-style: normal;
+
+  margin-right: 16px;
+}
+
+.workout-rating-value {
+  color: #242424;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-right: 2px;
+}
+
+.workout-rating-icon {
+  margin-right: auto;
+}
+
+.workout-start-btn {
+  color: #242424;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.workout-start-icon {
+  margin-left: 8px;
+}
+
+.workout-body {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+.workout-icon {
+  fill: #F4F4F4;
+  background-color: #242424;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.workout-title {
+  color: #242424;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+.workout-meta {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.workout-meta-item {
+  color: rgba(36, 36, 36, 0.40);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.workout-meta-value {
+  overflow: hidden;
+  color: #242424;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+
