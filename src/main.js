@@ -1,4 +1,5 @@
 import './css/styles.css';
+import '@fontsource/dm-sans';
 
 // NOTE: just sample how to use api methods/show errors
 import {
