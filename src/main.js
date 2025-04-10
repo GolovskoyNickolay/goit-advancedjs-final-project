@@ -1,5 +1,6 @@
 import './css/styles.css';
-import '@fontsource/dm-sans';
+import './js/menu.js';
+import './js/header-sticky.js';
 
 import './js/main-section/main-section.js';
 
