@@ -1,5 +1,9 @@
 /*Import shared styles here*/
 @import './ui-kit.css';
+@import './reset.css';
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+
 :root {
   --white: #ffffff;
   --offwhite: #f4f4f4;
