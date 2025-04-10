@@ -7,6 +7,7 @@ import { resolve } from 'path';
 
 export default defineConfig(({ command }) => {
   return {
+    base: '/goit-advancedjs-final-project/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
