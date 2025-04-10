@@ -1,6 +1,9 @@
 /*Import shared styles here*/
 @import './ui-kit.css';
 @import './reset.css';
+@import './container.css';
+@import './header.css';
+@import './menu.css';
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
 
@@ -22,9 +25,30 @@
   --button-color: #333;
   --button-hover-bg: #888;
   --nav-bg: #1E1E1E;
+  --transition-duration-base: 250ms;
+  --transition-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --box-shadow-base: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+  0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --color-border-light: rgba(36, 36, 36, 0.1);
 }
 
 a {
   color: currentcolor;
   text-decoration: none;
+}
+
+.sticky {
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-64%);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  display: block;
+  padding: 0;
+  background-color: transparent;
 }
