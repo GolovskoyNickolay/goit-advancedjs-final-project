@@ -1,14 +1,67 @@
-<main>
-  <span>Exercises</span>
-  <ul>
-    <li>Muscles</li>
-    <li>Body parts</li>
-    <li>Equipment</li>
-  </ul>
-  <!-- Cards--->
-  <ul>
-    <li></li>
-  </ul>
-  <!-- pagination -->
-  <span>pagination</span>
+<main class="main-section">
+  <div class="container">
+    <!-- exercise header -->
+    <div>
+      <!-- Filter Navigation -->
+      <div class="filter-path">
+        <h2 class="filter-path-start">Exercises</h2>
+        <span class="filter-path-part"></span>
+      </div>
+
+      <!-- Search -->
+      <form
+        class="search-form invisiable"
+        id="search-form"
+        style="display: block"
+      >
+        <input
+          name="search"
+          type="text"
+          class="search-input"
+          id="search-input"
+          placeholder="Search"
+          aria-label="Search exercises"
+        />
+        <button type="submit" class="search-button" aria-label="Start search">
+          <svg width="18" height="18">
+            <use xlink:href="../img/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Filters -->
+      <ul class="filters-list">
+        <li class="filters-item active" data-filter="Muscles">Muscles</li>
+        <li class="filters-item" data-filter="Body parts">Body parts</li>
+        <li class="filters-item" data-filter="Equipment">Equipment</li>
+      </ul>
+    </div>
+
+    <!-- Filters list-->
+    <section>
+      <!-- Category Cards--->
+      <ul class="category-list"></ul>
+      <!-- Exercise Cards--->
+      <ul class="exercise-list"></ul>
+      <!-- Pagination -->
+      <div
+        class="pagination"
+        data-total="3"
+        data-current="2"
+        style="display: flex"
+      >
+        <li class="pagination-page"></li>
+        <li data-index="" class="pagination-page"></li>
+        <li data-index="" class="pagination-page"></li>
+        <li data-index="" class="pagination-page selected"></li>
+        <li class="pagination-page"></li>
+      </div>
+    </section>
+    <!-- side bar -->
+    <section>
+      <h3>quote of day(TODO: past here Sidebar)</h3>
+      <h3>some image(TODO: past here Sidebar)</h3>
+      <h3>why the sport is important(TODO: past here Sidebar)</h3>
+    </section>
+  </div>
 </main>

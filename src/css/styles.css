@@ -1,5 +1,10 @@
 /*Import shared styles here*/
+@import 'modern-normalize/modern-normalize.css';
+@import './reset.css';
 @import './ui-kit.css';
+@import './main-section/index.css';
+@import './pagination.css';
+
 :root {
   --white: #ffffff;
   --offwhite: #f4f4f4;
@@ -17,10 +22,9 @@
   --search-border-radius: 20px;
   --button-color: #333;
   --button-hover-bg: #888;
-  --nav-bg: #1E1E1E;
+  --nav-bg: #1e1e1e;
 }
 
-a {
-  color: currentcolor;
-  text-decoration: none;
+.container {
+  padding: 20px;
 }

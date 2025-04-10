@@ -1,6 +1,8 @@
 import './css/styles.css';
 import '@fontsource/dm-sans';
 
+import './js/main-section/main-section.js';
+
 // NOTE: just sample how to use api methods/show errors
 import {
   getExercises,
