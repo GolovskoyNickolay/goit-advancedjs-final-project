@@ -32,5 +32,5 @@ export const isMobile = () => {
 };
 
 export const isTablet = () => {
-  return !isMobileScreen() && window.innerWidth < TABLET;
+  return !isMobile() && window.innerWidth < TABLET;
 };

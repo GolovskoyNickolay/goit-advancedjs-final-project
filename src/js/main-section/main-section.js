@@ -101,7 +101,7 @@ class Filter {
 class Exercise {
   constructor() {
     this.exerciseyList = document.body.querySelector('.exercise-list');
-    this.limit = isMobile() ? 8 : 9;
+    this.limit = isMobile() ? 8 : 10;
   }
 
   init(filter, exercise) {
