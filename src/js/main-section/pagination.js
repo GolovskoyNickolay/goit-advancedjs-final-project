@@ -34,7 +34,6 @@ class Pagination {
   };
 
   render(total, active) {
-    console.log(total);
     total ? this.show() : this.hide();
 
     active = Number(active);

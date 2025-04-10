@@ -54,9 +54,9 @@ class Filter {
 
       searchForm.hide();
       this.show();
-      console.log(data);
+      // console.log(data);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
 
@@ -134,9 +134,9 @@ class Exercise {
       pagination.render(data.totalPages, data.page);
       pagination.callback = this.paginationExerciseCallback;
       this.show();
-      console.log(data);
+      // console.log(data);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
 
