@@ -1,4 +1,4 @@
-import { INVISIABLE_CLASS } from "./constants";
+import { INVISIABLE_CLASS } from './constants';
 
 class Pagination {
   #callback = null;
@@ -34,6 +34,9 @@ class Pagination {
   };
 
   render(total, active) {
+    console.log(total);
+    total ? this.show() : this.hide();
+
     active = Number(active);
     this.elements.active.innerHTML = active;
     this.elements.active.dataset.index = active;
@@ -94,6 +97,15 @@ class Pagination {
         <li data-index="" class="pagination-page invisiable"></li>
         <li data-index="" class="pagination-page invisiable"></li>
         <li class="pagination-page invisiable">...</li>`;
+  }
+
+  show() {
+    this.element.classList.remove(INVISIABLE_CLASS);
+    this.element.hidden = false;
+  }
+  hide() {
+    this.element.classList.add(INVISIABLE_CLASS);
+    this.element.hidden = true;
   }
 }
 

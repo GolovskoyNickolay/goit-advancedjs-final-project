@@ -14,11 +14,19 @@
   display: none;
 }
 
+@media only screen and (min-width: 768px) {
+  .exercise-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+}
+
 .workout-card {
   border-radius: 15px;
   background: #fff;
 
-  min-width: 335px;
+  min-width: 200px;
   min-height: 141px;
 
   cursor: pointer;
@@ -85,6 +93,13 @@
   line-height: 18px;
 }
 
+@media only screen and (min-width: 768px) {
+  .workout-start-btn {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
 .workout-start-icon {
   margin-left: 8px;
 }
@@ -111,6 +126,13 @@
   line-height: 20px;
   margin: 0;
 }
+
+@media only screen and (min-width: 768px) {
+  .workout-title {
+    font-size: 24px;
+  }
+}
+
 .workout-meta {
   list-style: none;
   padding: 0;

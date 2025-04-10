@@ -1,8 +1,24 @@
 .main-section {
 }
+@media only screen and (min-width: 1152px) {
+  .main-content {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 .filter-path {
   margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .filter-path {
+    margin-bottom: 32px;
+  }
 }
 
 .filter-path-start {
@@ -21,14 +37,49 @@
   color: #24242480;
 }
 
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .filter-path-start {
+    font-size: 44px;
+  }
+  .filter-path-part {
+    font-size: 24px;
+  }
+
+  .filter-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+}
+
+@media only screen and (min-width: 1152px) {
+  .filter-wrapper {
+    gap: 30px;
+    width: fit-content;
+  }
+}
+
 .filters-list {
   display: flex;
   flex-direction: row;
   gap: 20px;
   color: rgba(36, 36, 36, 0.6);
   line-height: 143%;
-  margin-bottom: 20px;
   height: 28px;
+}
+
+@media only screen and (min-width: 768px) {
+  .filters-list {
+    height: 32px;
+  }
 }
 
 .filters-item {
@@ -36,7 +87,7 @@
   overflow: hidden;
 }
 
-.filters-item:not(.active):hover {
+.filters-item:hover {
   cursor: pointer;
 }
 

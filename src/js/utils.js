@@ -23,3 +23,14 @@ export function findClosestParrent(
 
   return el.nodeName === nodeNameFind ? el : null;
 }
+
+const MOBILE = 768;
+const TABLET = 1152;
+
+export const isMobile = () => {
+  return window.innerWidth < MOBILE;
+};
+
+export const isTablet = () => {
+  return !isMobileScreen() && window.innerWidth < TABLET;
+};

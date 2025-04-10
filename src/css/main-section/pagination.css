@@ -9,6 +9,10 @@
   margin-top: 20px;
 }
 
+.pagination.invisiable {
+  display: none;
+}
+
 .pagination-page {
   color: rgb(212, 212, 212);
   font-family: 'DM Sans', sans-serif;

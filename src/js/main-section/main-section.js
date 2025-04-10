@@ -1,6 +1,6 @@
 import { getExercises, getFilters } from '../../services/apiServices';
 import pagination from './pagination';
-import { capitalizeFirstLetter, findClosestParrent } from '../utils';
+import { capitalizeFirstLetter, findClosestParrent, isMobile } from '../utils';
 import searchForm from './search';
 import { INVISIABLE_CLASS, FILTERS } from './constants';
 
@@ -19,6 +19,8 @@ class Filter {
       start: document.querySelector('.filter-path-start'),
       part: document.querySelector('.filter-path-part'),
     };
+
+    this.limit = isMobile() ? 9 : 12;
   }
 
   onClick = ({ target }) => {
@@ -35,9 +37,13 @@ class Filter {
     this.path.part.innerHTML = '';
   };
 
-  async render(page = 1, limit = 9) {
+  async render(page = 1) {
     try {
-      const data = await getFilters({ filter: this.filter, limit, page });
+      const data = await getFilters({
+        filter: this.filter,
+        limit: this.limit,
+        page,
+      });
       //   this.currentData = data;
 
       this.categoryList.innerHTML = data.results
@@ -95,7 +101,7 @@ class Filter {
 class Exercise {
   constructor() {
     this.exerciseyList = document.body.querySelector('.exercise-list');
-    // this.filter = 'Muscles';
+    this.limit = isMobile() ? 8 : 9;
   }
 
   init(filter, exercise) {
@@ -108,11 +114,11 @@ class Exercise {
     this.render();
   }
 
-  async render(page = 1, limit = 9) {
+  async render(page = 1) {
     try {
       const options = {
         [FILTERS[this.filter]]: this.exercise,
-        limit,
+        limit: this.limit,
         page,
       };
 
