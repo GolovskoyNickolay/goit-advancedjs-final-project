@@ -125,7 +125,6 @@ class Exercise {
       if (this.keyword) options.keyword = this.keyword;
       const data = await getExercises(options);
 
-      this.limit = limit;
       this.page = page;
       //   this.currentData = data;
 
