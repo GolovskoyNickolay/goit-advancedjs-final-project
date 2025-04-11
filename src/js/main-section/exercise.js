@@ -42,7 +42,7 @@ export default class Exercise {
       //   this.currentData = data;
 
       this.exerciseyList.innerHTML = data.results
-        .map(Exercise.exerciseMarkup)
+        .map(el => Exercise.exerciseMarkup(el))
         .join('');
       this.paginationInstance.render(data.totalPages, data.page);
       this.paginationInstance.callback = this.paginationExerciseCallback;
@@ -61,19 +61,30 @@ export default class Exercise {
     time,
     bodyPart,
     target,
-  }) {
+  }, isFavourite = false) {
+    console.log(isFavourite);
+    
     return `<li class="workout-card" data-id="${_id}">
           <div class="workout-card-container">
             <div class="workout-header">
               <span class="workout-badge">WORKOUT</span>
-              <span class="workout-rating-value">${rating.toFixed(2)}</span>
-              <svg width="18" height="18" class="workout-rating-icon">
-                <use xlink:href="../img/icons.svg#icon-Star"></use>
-              </svg>
+              ${
+                isFavourite ?
+      `<button onclick="document.removeFavourite(this)" class="workout-remove-btn">
+                  <svg width="16" height="16" class="workout-remove-icon">
+                    <use xlink:href="../img/icons.svg#icon-remove"></use>
+                  </svg></button>`
+                : `<div class="workout-rating">
+                    <span class="workout-rating-value">${rating.toFixed(2)}</span>
+                    <svg width="18" height="18" class="workout-rating-icon">
+                      <use xlink:href="../img/icons.svg#icon-Star"></use>
+                    </svg>
+                  </div>`
+              }
               <a href="#" class="workout-start-btn"
                 >Start
                 <svg width="16" height="16" class="workout-start-icon">
-                  <use xlink:href="../img/icons.svg#menu"></use>
+                  <use xlink:href="../img/icons.svg#icon-start"></use>
                 </svg>
               </a>
             </div>
@@ -85,16 +96,18 @@ export default class Exercise {
             </div>
             <ul class="workout-meta">
               <li class="workout-meta-item">
-                Burned calories:
+                <span class="workout-meta-name">Burned calories:</span>
                 <span class="workout-meta-value">${burnedCalories} / ${
       time || '...'
     }</span>
               </li>
               <li class="workout-meta-item">
-                Body part: <span class="workout-meta-value">${bodyPart}</span>
+                <span class="workout-meta-name">Body part:</span>
+                <span class="workout-meta-value">${bodyPart}</span>
               </li>
               <li class="workout-meta-item">
-                Target: <span class="workout-meta-value">${target}</span>
+                <span class="workout-meta-name">Target:</span>
+                <span class="workout-meta-value">${target}</span>
               </li>
             </ul>
           </div>

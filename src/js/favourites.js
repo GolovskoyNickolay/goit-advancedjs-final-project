@@ -1,6 +1,6 @@
 import { NAME_OF_STORAGE, TEXT_IF_EMPTY } from "./main-section/constants";
 import { getExercises } from "../services/apiServices";
-import { Exercise } from "./main-section/main-section";
+import Exercise from "./main-section/exercise";
 
 // getExercises({ bodypart: 'back' })
 //     .then(data => {
