@@ -1,6 +1,7 @@
 import './css/styles.css';
 import './js/menu.js';
 import './js/header-sticky.js';
+import './js/main-section';
 
 // NOTE: just sample how to use api methods/show errors
 import {
