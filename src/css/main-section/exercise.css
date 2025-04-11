@@ -74,6 +74,11 @@
   margin-right: 16px;
 }
 
+.workout-rating {
+  display: flex;
+  align-items: center;
+}
+
 .workout-rating-value {
   color: #242424;
   font-size: 12px;
@@ -88,6 +93,9 @@
 }
 
 .workout-start-btn {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
   color: #242424;
   font-size: 14px;
   line-height: 18px;

@@ -148,44 +148,50 @@ export class Exercise {
     time,
     bodyPart,
     target,
-  }) {
+  }, isFavourite = false) {
     return `<li class="workout-card" data-id="${_id}">
-          <div class="workout-card-container">
-            <div class="workout-header">
-              <span class="workout-badge">WORKOUT</span>
-              <span class="workout-rating-value">${rating.toFixed(2)}</span>
-              <svg width="18" height="18" class="workout-rating-icon">
-                <use xlink:href="../img/icons.svg#icon-Star"></use>
-              </svg>
-              <a href="#" class="workout-start-btn"
-                >Start
-                <svg width="16" height="16" class="workout-start-icon">
-                  <use xlink:href="../img/icons.svg#menu"></use>
+      <div class="workout-card-container">
+        <div class="workout-header">
+          <span class="workout-badge">WORKOUT</span>
+          ${
+            isFavourite ?
+              `<svg width="16" height="16" class="workout-remove-icon">
+                <use xlink:href="../img/icons.svg#icon-remove"></use>
+              </svg>`
+            : `<div class="workout-rating">
+                <span class="workout-rating-value">${rating.toFixed(2)}</span>
+                <svg width="18" height="18" class="workout-rating-icon">
+                  <use xlink:href="../img/icons.svg#icon-Star"></use>
                 </svg>
-              </a>
-            </div>
-            <div class="workout-body">
-              <svg width="24" height="24" class="workout-icon">
-                <use xlink:href="../img/icons.svg#icon-running"></use>
-              </svg>
-              <h3 class="workout-title">${name}</h3>
-            </div>
-            <ul class="workout-meta">
-              <li class="workout-meta-item">
-                Burned calories:
-                <span class="workout-meta-value">${burnedCalories} / ${
-      time || '...'
-    }</span>
-              </li>
-              <li class="workout-meta-item">
-                Body part: <span class="workout-meta-value">${bodyPart}</span>
-              </li>
-              <li class="workout-meta-item">
-                Target: <span class="workout-meta-value">${target}</span>
-              </li>
-            </ul>
-          </div>
-        </li>`;
+              </div>`
+          }
+          <a href="#" class="workout-start-btn"
+            >Start
+            <svg width="16" height="16" class="workout-start-icon">
+              <use xlink:href="../img/icons.svg#icon-arrow"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="workout-body">
+          <svg width="24" height="24" class="workout-icon">
+            <use xlink:href="../img/icons.svg#icon-running"></use>
+          </svg>
+          <h3 class="workout-title">${name}</h3>
+        </div>
+        <ul class="workout-meta">
+          <li class="workout-meta-item">
+            Burned calories:
+            <span class="workout-meta-value">${burnedCalories} / ${time || '...'}</span>
+          </li>
+          <li class="workout-meta-item">
+            Body part: <span class="workout-meta-value">${bodyPart}</span>
+          </li>
+          <li class="workout-meta-item">
+            Target: <span class="workout-meta-value">${target}</span>
+          </li>
+        </ul>
+      </div>
+    </li>`;
   }
 
   paginationExerciseCallback = index => {
