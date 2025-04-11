@@ -4,3 +4,7 @@
 @import './main-section.css';
 @import './pagination.css';
 @import './sidebar.css';
+
+.main-cards {
+    width: 100%;
+}

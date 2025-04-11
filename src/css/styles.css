@@ -8,6 +8,8 @@
 @import './header.css';
 @import './menu.css';
 @import './sidebar.css';
+@import './main-section/footer.css';
+
 
 :root {
   --white: #ffffff;
@@ -33,6 +35,7 @@
   --box-shadow-base: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   --color-border-light: rgba(36, 36, 36, 0.1);
+
 }
 
 a {
