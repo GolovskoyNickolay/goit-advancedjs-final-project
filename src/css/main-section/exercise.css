@@ -26,12 +26,24 @@
   border-radius: 15px;
   background: #fff;
 
-  min-width: 200px;
-  min-height: 141px;
+  min-width: 280px;
+  height: 141px;
 
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   user-select: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .workout-card {
+    min-width: 334px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .workout-card {
+    min-width: 442px;
+  }
 }
 
 .workout-card:hover {
@@ -60,13 +72,17 @@
   margin-bottom: 27px;
 }
 
+@media only screen and (min-width: 768px) {
+  .workout-header {
+    margin-bottom: 25px;
+  }
+}
+
 .workout-badge {
   border-radius: 15px;
-  border: 1px solid #242424;
-
+  border: 1px solid var(--dark);
   padding: 5px 8px;
-
-  color: #242424;
+  color: var(--dark);
 
   font-size: 12px;
   font-style: normal;
@@ -117,6 +133,12 @@
   margin-bottom: 18px;
   align-items: center;
   justify-content: flex-start;
+}
+
+@media only screen and (min-width: 768px) {
+  .workout-body {
+    margin-bottom: 8px;
+  }
 }
 
 .workout-icon {

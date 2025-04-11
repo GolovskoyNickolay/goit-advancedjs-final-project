@@ -33,6 +33,10 @@
   --color-border-light: rgba(36, 36, 36, 0.1);
 }
 
+body {
+  overflow-y: scroll;
+}
+
 a {
   color: currentcolor;
   text-decoration: none;
