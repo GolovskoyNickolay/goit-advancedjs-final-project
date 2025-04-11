@@ -7,7 +7,6 @@ import { resolve } from 'path';
 
 export default defineConfig(({ command }) => {
   return {
-    base: '/goit-advancedjs-final-project/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -17,6 +16,7 @@ export default defineConfig(({ command }) => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'src/index.html'),
+          favorites: resolve(__dirname, 'src/favorites.html'),
           uiKit: resolve(__dirname, 'src/partials/ui-kit.html'),
         },
         output: {

@@ -1,0 +1,133 @@
+.sidebar-container {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  align-items: start;
+  align-content: start;
+}
+
+@media only screen and (min-width: 375px) {
+  .sidebar-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .sidebar-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .sidebar-container {
+    max-width: 450px;
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar-quote-container {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  height: 225px;
+  width: 100%;
+}
+
+.sidebar-quote-ranner-icon-container,
+.sidebar-quote-dumbbell-svg-container {
+  background: var(--dark-hover);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 30px;
+}
+
+.sidebar-quote-dumbbell-svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+}
+
+.sidebar-quote-commas-svg,
+.sidebar-quote-ranner-svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+}
+
+.sidebar-quote-commas-svg {
+  width: 28px;
+  height: 28px;
+}
+
+.sidebar-quote-wrapper,
+.sidebar-sports-wrapper {
+  width: 100%;
+}
+
+.sidebar-quote-title-wrapper {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-quote-title-wrapper h3,
+.sidebar-time {
+  font-family: "DM Sans", sans-serif;
+  color: var(--offwhite);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.sidebar-quote,
+.sidebar-norm-sport {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 18px;
+  font-family: "DM Sans", sans-serif;
+  color: var(--quote-text);
+}
+
+.sidebar-quote-author,
+.static-info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 18px;
+  font-family: "DM Sans", sans-serif;
+  color: var(--offwhite);
+}
+
+.sidebar-norm-sport {
+  color: var(--dark-hover);
+}
+
+.sidebar-time,
+.static-info {
+  color: var(--dark);
+}
+
+.fav-picture,
+.sidebar-quote-image {
+  width: 100%;
+  border-radius: 20px;
+  max-height: 225px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sidebar-sports-info {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
