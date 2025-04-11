@@ -1,5 +1,7 @@
 /*Import shared styles here*/
 @import './ui-kit.css';
+@import './modal.css';
+
 :root {
   --white: #ffffff;
   --offwhite: #f4f4f4;
@@ -17,7 +19,7 @@
   --search-border-radius: 20px;
   --button-color: #333;
   --button-hover-bg: #888;
-  --nav-bg: #1E1E1E;
+  --nav-bg: #1e1e1e;
 }
 
 a {
