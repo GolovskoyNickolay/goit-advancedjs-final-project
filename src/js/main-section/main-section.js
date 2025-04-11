@@ -154,19 +154,19 @@ class Exercise {
             <div class="workout-header">
               <span class="workout-badge">WORKOUT</span>
               <span class="workout-rating-value">${rating.toFixed(2)}</span>
-              <svg width="18" height="18" class="workout-rating-icon">
-                <use xlink:href="../img/icons.svg#icon-Star"></use>
+              <svg width="14" height="13" class="workout-rating-icon">
+                <use href="./img/icons.svg#icon-Star"></use>
               </svg>
               <a href="#" class="workout-start-btn"
                 >Start
                 <svg width="16" height="16" class="workout-start-icon">
-                  <use xlink:href="../img/icons.svg#menu"></use>
+                  <use href="./img/icons.svg#icon-start-arrow"></use>
                 </svg>
               </a>
             </div>
             <div class="workout-body">
               <svg width="24" height="24" class="workout-icon">
-                <use xlink:href="../img/icons.svg#icon-running"></use>
+                <use href="./img/icons.svg#icon-running"></use>
               </svg>
               <h3 class="workout-title">${name}</h3>
             </div>
@@ -174,8 +174,8 @@ class Exercise {
               <li class="workout-meta-item">
                 Burned calories:
                 <span class="workout-meta-value">${burnedCalories} / ${
-      time || '...'
-    }</span>
+      time + ' min'}
+                </span>
               </li>
               <li class="workout-meta-item">
                 Body part: <span class="workout-meta-value">${bodyPart}</span>
