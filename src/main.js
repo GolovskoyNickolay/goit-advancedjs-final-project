@@ -1,8 +1,7 @@
 import './css/styles.css';
 import './js/menu.js';
 import './js/header-sticky.js';
-
-import './js/main-section/main-section.js';
+import '/js/main-section/quote.js'
 
 // NOTE: just sample how to use api methods/show errors
 import {
