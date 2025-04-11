@@ -5,11 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/goit-advancedjs-final-project/assets/favicon-DPh7KmBi.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Energy</title>
-    <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/main-7BidAhGy.js"></script>
+    <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/main-ottG0Itq.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/vendor-DtMf18Bm.js">
-    <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/exercise-fEcZxVzC.js">
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/styles-DiV_As1u.css">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/exercise-BSYikZ4s.js">
     <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/vendor-D_nxXpU-.css">
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/styles-JIW4Sp7P.css">
   </head>
   <body>
     <header class="header">
@@ -179,11 +179,85 @@
       </div>
       </section>
       <!-- Side bar -->
-      <section class="sidebar">
-        <h3>quote of day(TODO: past here Sidebar)</h3>
-        <h3>some image(TODO: past here Sidebar)</h3>
-        <h3>why the sport is important(TODO: past here Sidebar)</h3>
-      </section>
+      <section class="sidebar-container">
+  <div class="sidebar-quote-container">
+    <div class="sidebar-quote-ranner-icon-container">
+      <svg
+        class="sidebar-quote-ranner-svg"
+        viewBox="0 0 32 32"
+        height="30"
+        width="32"
+        aria-hidden="true"
+      >
+        <use x="0" y="0" href="/goit-advancedjs-final-project/assets/icons-vrxFavXZ.svg#icon-running"></use>
+      </svg>
+    </div>
+
+    <div class="sidebar-quote-wrapper">
+      <div class="sidebar-quote-title-wrapper">
+        <h3>Quote of the day</h3>
+        <svg
+          class="sidebar-quote-commas-svg"
+          viewBox="0 0 32 32"
+          width="24"
+          height="24"
+          aria-hidden="true"
+        >
+          <use x="0" y="0" href="/goit-advancedjs-final-project/assets/icons-vrxFavXZ.svg#icon-commas"></use>
+        </svg>
+      </div>
+      <div class="sidebar-quote"></div>
+      <div class="sidebar-quote-author"></div>
+    </div>
+  </div>
+  <picture class="fav-picture">
+    <source
+      media="(min-width: 1440px)"
+      srcset="/goit-advancedjs-final-project/assets/sidebar-img-desktop@1x-C6AuElxX.jpg 1x, /goit-advancedjs-final-project/assets/sidebar-img-desktop@2x-DOsQT8wB.jpg 2x"
+    />
+    <source
+      media="(min-width: 768px)"
+      srcset="/goit-advancedjs-final-project/assets/sidebar-img-tablet@1x-C3B382Rz.jpg 1x, /goit-advancedjs-final-project/assets/sidebar-img-tablet@2x-CSrug3GI.jpg 2x"
+    />
+    <img
+      class="sidebar-quote-image"
+      width="335"
+      height="242"
+      srcset="/goit-advancedjs-final-project/assets/sidebar-img-mobile@1x-Bf__UmbA.jpg 1x, /goit-advancedjs-final-project/assets/sidebar-img-mobile@2x-BOfMosqN.jpg 2x"
+      src="/goit-advancedjs-final-project/assets/sidebar-img-mobile@1x-Bf__UmbA.jpg"
+      alt="sidebar-container"
+      loading="lazy"
+    />
+  </picture>
+  <div class="sidebar-sports-info">
+    <div class="sidebar-quote-dumbbell-svg-container">
+      <svg
+        class="sidebar-quote-dumbbell-svg"
+        viewBox="0 0 32 32"
+        height="30"
+        width="32"
+        aria-hidden="true"
+      >
+        <use x="0" y="0" href="/goit-advancedjs-final-project/assets/icons-vrxFavXZ.svg#icon-dumbbell"></use>
+      </svg>
+    </div>
+
+    <div class="sidebar-sports-wrapper">
+      <p class="sidebar-time">110 min</p>
+      <p class="sidebar-norm-sport">Daily norm of sports</p>
+      <p class="static-info">
+        The World Health Organization recommends at least 150 minutes of
+        moderate-intensity aerobic physical activity throughout the week for
+        adults aged 18-64. However, what happens if we adjust that number to 110
+        minutes every day? While it might seem like a high number to hit,
+        dedicating 110 minutes daily to sporting activities may offer
+        unparalleled benefits to physical health, mental well-being, and overall
+        quality of life.
+      </p>
+    </div>
+  </div>
+</section>
+
     </div>
   </div>
 </main>
