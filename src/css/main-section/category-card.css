@@ -7,12 +7,14 @@
   padding: 0;
   justify-content: center;
   height: fit-content;
-  transition-property: height;
-  transition-duration: 250ms;
+  max-height: 13373px;
+  transition-property: max-height;
+  transition-duration: 500ms;
+  overflow: hidden;
 }
 
 .category-list.invisiable {
-  display: none;
+  max-height: 0px;
 }
 
 @media only screen and (min-width: 768px) {

@@ -1,12 +1,14 @@
 import { getExercises } from '../../services/apiServices';
 import { isMobile } from '../utils';
-import { INVISIABLE_CLASS, FILTERS, INDEX_PATH } from './constants';
+import { INVISIABLE_CLASS, FILTERS } from './constants';
+import searchQueryParams from './searchParams.js';
 
 export default class Exercise {
   constructor(isIndexPage, paginationInstance) {
     this.exerciseyList = document.body.querySelector('.exercise-list');
     this.limit = isMobile() ? 8 : 10;
     this.paginationInstance = paginationInstance;
+    this.errorElement = document.body.querySelector('[data-exerciseError]');
 
     if (!isIndexPage) return;
     (async function (instance) {
@@ -15,16 +17,17 @@ export default class Exercise {
     })(this);
   }
 
-  init(filter, exercise) {
+  init(filter, exercise, keyword = '', page = 1) {
     this.show();
     this.filter = filter;
     this.exercise = exercise;
-    this.keyword = '';
+    this.keyword = keyword;
     if (this.searchForm) {
       this.searchForm.show();
+      this.searchForm.setValue(keyword);
       this.searchForm.callback = this.searchCallback;
     }
-    this.render();
+    this.render(page);
   }
 
   async render(page = 1) {
@@ -39,11 +42,17 @@ export default class Exercise {
       const data = await getExercises(options);
 
       this.page = page;
-      //   this.currentData = data;
 
-      this.exerciseyList.innerHTML = data.results
-        .map(el => Exercise.exerciseMarkup(el))
-        .join('');
+      if (data.results.length) {
+        this.errorHide();
+        this.exerciseyList.innerHTML = data.results
+          .map(el => Exercise.exerciseMarkup(el))
+          .join('');
+      } else {
+        this.exerciseyList.innerHTML = '';
+        this.errorShow();
+      }
+
       this.paginationInstance.render(data.totalPages, data.page);
       this.paginationInstance.callback = this.paginationExerciseCallback;
       this.show();
@@ -53,29 +62,24 @@ export default class Exercise {
     }
   }
 
-  static exerciseMarkup({
-    _id,
-    rating,
-    name,
-    burnedCalories,
-    time,
-    bodyPart,
-    target,
-  }, isFavourite = false) {
-    
-    
+  static exerciseMarkup(
+    { _id, rating, name, burnedCalories, time, bodyPart, target },
+    isFavourite = false
+  ) {
     return `<li class="workout-card" data-id="${_id}">
           <div class="workout-card-container">
             <div class="workout-header">
               <span class="workout-badge">WORKOUT</span>
               ${
-                isFavourite ?
-      `<button onclick="document.removeFavourite(this)" class="workout-remove-btn">
+                isFavourite
+                  ? `<button onclick="document.removeFavourite(this)" class="workout-remove-btn">
                   <svg width="16" height="16" class="workout-remove-icon">
                     <use xlink:href="../img/icons.svg#icon-remove"></use>
                   </svg></button>`
-                : `<div class="workout-rating">
-                    <span class="workout-rating-value">${rating.toFixed(2)}</span>
+                  : `<div class="workout-rating">
+                    <span class="workout-rating-value">${rating.toFixed(
+                      2
+                    )}</span>
                     <svg width="18" height="18" class="workout-rating-icon">
                       <use xlink:href="../img/icons.svg#icon-Star"></use>
                     </svg>
@@ -115,12 +119,16 @@ export default class Exercise {
   }
 
   paginationExerciseCallback = index => {
+    searchQueryParams.set('page', index);
     this.render(index);
   };
 
   searchCallback = keyword => {
     // if (keyword === this.keyword) return;
     this.keyword = keyword || '';
+    if (keyword) searchQueryParams.set('keyword', keyword);
+    else searchQueryParams.delete('keyword');
+
     this.render();
   };
 
@@ -131,5 +139,18 @@ export default class Exercise {
   hide() {
     this.exerciseyList.classList.add(INVISIABLE_CLASS);
     this.exerciseyList.hidden = true;
+    this.errorHide();
+  }
+
+  errorShow(text = 'Exersice was not found') {
+    this.errorElement.innerHTML = text;
+    this.errorElement.classList.remove(INVISIABLE_CLASS);
+    this.errorElement.hidden = false;
+  }
+
+  errorHide() {
+    this.errorElement.innerHTML = '';
+    this.errorElement.classList.add(INVISIABLE_CLASS);
+    this.errorElement.hidden = true;
   }
 }

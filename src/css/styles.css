@@ -9,7 +9,6 @@
 @import './menu.css';
 @import './main-section/footer.css';
 
-
 :root {
   --white: #ffffff;
   --offwhite: #f4f4f4;
@@ -33,7 +32,6 @@
   --box-shadow-base: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   --color-border-light: rgba(36, 36, 36, 0.1);
-
 }
 
 a {
@@ -55,4 +53,10 @@ button {
   display: block;
   padding: 0;
   background-color: transparent;
+}
+
+.error-message {
+  color: #eea10c;
+  font-size: 1.5rem;
+  text-align: center;
 }
