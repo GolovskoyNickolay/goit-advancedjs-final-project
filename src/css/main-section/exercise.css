@@ -91,6 +91,13 @@
   color: #242424;
   font-size: 14px;
   line-height: 18px;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+}
+
+.workout-start-btn:hover, .workout-start-btn:focus-visible {
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -102,6 +109,7 @@
 
 .workout-start-icon {
   margin-left: 8px;
+
 }
 
 .workout-body {
