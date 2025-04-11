@@ -15,16 +15,14 @@ export const openExerciseModal = async id => {
 
     modalBody.innerHTML = createExerciseMarkup(exercise);
 
-    // Тут можна додати слухачі на кнопки, як і раніше
+    // Тут можна додати слухачі на кнопки
     // const addFavoritesBtn = modal.querySelector('.add-favorites-btn');
     // const rateBtn = modal.querySelector('.rate-btn');
 
     // addFavoritesBtn.addEventListener('click', () => {
-    //   // Твоя функція додавання в улюблене
     // });
 
     // rateBtn.addEventListener('click', () => {
-    //   // Твоя функція додавання оцінки
     // });
   } catch (error) {
     console.log(error);
@@ -74,7 +72,7 @@ const createExerciseMarkup = exercise => {
             <li>Target<span>${exercise.target}</span></li>
             <li>Body Part<span>${exercise.bodyPart}</span></li>
             <li>Equipment<span>${exercise.equipment}</span></li>
-            <li>Popular<span>${exercise.popular}</span></li>
+            <li>Popular<span>${exercise.popularity}</span></li>
             <li>Burned calories<span>${exercise.burnedCalories}</span></li>
           </ul>
 
@@ -82,8 +80,14 @@ const createExerciseMarkup = exercise => {
         </div>
 
         <div class="exercise-buttons">
-          <button class="add-favorites-btn" data-id="${exercise.id}">Add to favorites ❤️</button>
-          <button class="rate-btn" data-id="${exercise.id}">Give a rating</button>
+          <button type="button" class="favorites-btn" data-id="${exercise.id}>
+            <span class="favorites-btn-text">Add to favorites</span>
+            <svg class="icon-heart" height="18" width="20">
+              <use xlink:href="/src/img/icons.svg#icon-heart"></use>
+              </svg>
+          </button>
+
+          <button type="button" class="rate-btn" data-id="${exercise.id}">Give a rating</button>
         </div>
       </div>
     </div>
