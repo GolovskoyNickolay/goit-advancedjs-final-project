@@ -16,6 +16,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "@fontsource/dm-sans": "^5.2.5",
     "axios": "^1.7.7",
     "izitoast": "^1.4.0",
     "modern-normalize": "^3.0.1",

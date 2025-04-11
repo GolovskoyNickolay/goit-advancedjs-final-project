@@ -1,3 +1,4 @@
+/* #region start reset */
 h1,
 h2,
 h3,
@@ -19,12 +20,16 @@ ul {
 }
 
 a {
-  color: currentColor;
   text-decoration: none;
+  font-style: normal;
+  color: currentColor;
 }
 
 button {
+  font-family: inherit;
+  color: currentColor;
   cursor: pointer;
+  border: none;
 }
 
 img {
