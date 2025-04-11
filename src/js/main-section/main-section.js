@@ -98,7 +98,7 @@ class Filter {
   }
 }
 
-class Exercise {
+export class Exercise {
   constructor() {
     this.exerciseyList = document.body.querySelector('.exercise-list');
     this.limit = isMobile() ? 8 : 10;
@@ -129,7 +129,7 @@ class Exercise {
       //   this.currentData = data;
 
       this.exerciseyList.innerHTML = data.results
-        .map(this.exerciseMarkup)
+        .map(Exercise.exerciseMarkup)
         .join('');
       pagination.render(data.totalPages, data.page);
       pagination.callback = this.paginationExerciseCallback;
@@ -140,7 +140,7 @@ class Exercise {
     }
   }
 
-  exerciseMarkup({
+  static exerciseMarkup({
     _id,
     rating,
     name,
