@@ -62,7 +62,7 @@ export default class Exercise {
     bodyPart,
     target,
   }, isFavourite = false) {
-    console.log(isFavourite);
+    
     
     return `<li class="workout-card" data-id="${_id}">
           <div class="workout-card-container">
