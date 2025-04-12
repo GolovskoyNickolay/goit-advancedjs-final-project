@@ -1,95 +1,122 @@
 import { getExerciseById } from '../services/apiServices.js';
+import { addFavouritesToStorage, isFavouritesExercise, removeFavouritesFromStorage } from './favourites.js';
 
-const modalOverlay = document.querySelector('.modal-overlay');
-const modal = document.getElementById('exerciseModal');
-const modalBody = document.querySelector('.modal-body');
-const closeBtn = document.querySelector('.modal-close');
+export class ExerciseModal {
+  constructor() {
+    this.modalOverlay = document.querySelector('.modal-overlay');
+    this.modal = document.getElementById('exerciseModal');
+    this.modalBody = document.querySelector('.modal-body');
+    this.closeBtn = document.querySelector('.modal-close');
 
-export const openExerciseModal = async event => {
-  const card = event.target.closest('.workout-card');
-  if (!card) return;
+    this.exercise = null;
+    this.isFavorite = false;
 
-  const id = card.dataset.id;
-
-  modalOverlay.classList.add('is-open');
-
-  try {
-    modalBody.innerHTML = '<p class="loading">Loading...</p>';
-
-    const exercise = await getExerciseById(id);
-
-    modalBody.innerHTML = createExerciseMarkup(exercise);
-
-    // Тут можна додати слухачі на кнопки
-    // const addFavoritesBtn = modal.querySelector('.add-favorites-btn');
-    // const rateBtn = modal.querySelector('.rate-btn');
-
-    // addFavoritesBtn.addEventListener('click', () => {
-    // });
-
-    // rateBtn.addEventListener('click', () => {
-    // });
-  } catch (error) {
-    console.log(error);
-    modalBody.innerHTML =
-      '<p class="error">Failed to load exercise. Try again later.</p>';
+    this.closeBtn.addEventListener('click', () => this.close());
   }
-};
 
-closeBtn.addEventListener('click', () => {
-  modalOverlay.classList.remove('is-open');
-});
+  async open(event) {
+    const card = event.target.closest('.workout-card');
+    if (!card) return;
 
-// {
-//   "_id": "64f389465ae26083f39b17ac",
-//   "bodyPart": "waist",
-//   "equipment": "medicine ball",
-//   "gifUrl": "https://ftp.goit.study/img/power-pulse/gifs/0014.gif",
-//   "name": "assisted motion russian twist",
-//   "target": "abs",
-//   "description": "This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for
-// maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.", "rating":
-// 3.56, "burnedCalories": 212, "time": 3, "popularity": 1432 }
+    const id = card.dataset.id;
 
-const createExerciseMarkup = exercise => {
-  return `
-    <div class="exercise-details">
-      <img src="${exercise.gifUrl}" alt="${exercise.name}" class="exercise-img">
-      <div class="exercise-content">
-        <div>
-          <h2 class="exercise-title">${exercise.name}</h2>
+    this.modalOverlay.classList.add('is-open');
+    this.modalBody.innerHTML = '<p class="loading">Loading...</p>';
 
-          <div class="exercise-rate">
-            <p>${exercise.rating}</p>
-            <div class="exercise-rating-stars">
-             ${[...Array(5)].map((_, index) => {
-    return `<span class="star ${index < Math.round(exercise.rating) ? 'filled' : ''}">⭐</span>`;
-  }).join('')}
+    try {
+      this.exercise = await getExerciseById(id);
+      this.isFavorite = isFavouritesExercise(this.exercise._id);
+
+      this.render();
+      this.addEventListeners();
+    } catch (error) {
+      console.error(error);
+      this.modalBody.innerHTML = '<p class="error">Failed to load exercise. Try again later.</p>';
+    }
+  }
+
+  close() {
+    this.modalOverlay.classList.remove('is-open');
+    this.modalBody.innerHTML = '';
+  }
+
+  render() {
+    this.modalBody.innerHTML = this.createExerciseMarkup();
+  }
+
+  addEventListeners() {
+    const favoritesBtn = this.modal.querySelector('.favorites-btn');
+    const rateBtn = this.modal.querySelector('.rate-btn');
+
+    favoritesBtn.addEventListener('click', () => this.toggleFavorite(favoritesBtn));
+    // Тут можеш додати обробку rateBtn
+  }
+
+  toggleFavorite(button) {
+    if (this.isFavorite) {
+      removeFavouritesFromStorage(this.exercise._id);
+      this.isFavorite = false;
+    } else {
+      addFavouritesToStorage(this.exercise);
+      this.isFavorite = true;
+    }
+    this.updateFavoritesButton(button);
+  }
+
+  updateFavoritesButton(button) {
+    button.innerHTML = `
+      <span class="favorites-btn-text">
+        ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+      </span>
+      <svg class="icon-heart" height="18" width="20">
+        <use href="../img/icons.svg#${this.isFavorite ? 'icon-trash' : 'icon-heart'}"></use>
+      </svg>
+    `;
+  }
+
+  createExerciseMarkup() {
+    const ex = this.exercise;
+    return `
+      <div class="exercise-details">
+        <img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">
+        <div class="exercise-content">
+          <div>
+            <h2 class="exercise-title">${ex.name}</h2>
+
+            <div class="exercise-rate">
+              <p>${ex.rating}</p>
+              <div class="exercise-rating-stars">
+                ${[...Array(5)].map((_, index) => `<span class="star ${index < Math.round(ex.rating) ? 'filled' : ''}">⭐</span>`).join('')}
+              </div>
             </div>
+
+            <ul class="exercise-info">
+              <li>Target<span>${ex.target}</span></li>
+              <li>Body Part<span>${ex.bodyPart}</span></li>
+              <li>Equipment<span>${ex.equipment}</span></li>
+              <li>Popular<span>${ex.popularity}</span></li>
+              <li>Burned calories<span>${ex.burnedCalories}</span></li>
+            </ul>
+
+            <p class="exercise-description">${ex.description}</p>
           </div>
 
-          <ul class="exercise-info">
-            <li>Target<span>${exercise.target}</span></li>
-            <li>Body Part<span>${exercise.bodyPart}</span></li>
-            <li>Equipment<span>${exercise.equipment}</span></li>
-            <li>Popular<span>${exercise.popularity}</span></li>
-            <li>Burned calories<span>${exercise.burnedCalories}</span></li>
-          </ul>
-
-          <p class="exercise-description">${exercise.description}</p>
-        </div>
-
-        <div class="exercise-buttons">
-          <button type="button" class="favorites-btn" data-id="${exercise.id}>
-            <span class="favorites-btn-text">Add to favorites</span>
-            <svg class="icon-heart" height="18" width="20">
-              <use xlink:href="/src/img/icons.svg#icon-heart"></use>
+          <div class="exercise-buttons">
+            <button type="button" class="favorites-btn" data-id="${ex._id}">
+              <span class="favorites-btn-text">
+                ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+              </span>
+              <svg class="icon-heart" height="18" width="20">
+                <use href="../img/icons.svg#${this.isFavorite ? 'icon-trash' : 'icon-heart'}"></use>
               </svg>
-          </button>
-
-          <button type="button" class="rate-btn" data-id="${exercise.id}">Give a rating</button>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  `;
-};
+    `;
+  }
+}
+
+// <button type="button" class="rate-btn" data-id="${ex._id}">Give a rating</button>
+
+
