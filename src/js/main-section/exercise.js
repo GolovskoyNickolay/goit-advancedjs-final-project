@@ -1,13 +1,16 @@
 import { getExercises } from '../../services/apiServices';
 import { isMobile } from '../utils';
 import { INVISIABLE_CLASS, FILTERS, INDEX_PATH } from './constants';
+import { openExerciseModal } from '../modal.js';
 
 export default class Exercise {
   constructor(isIndexPage, paginationInstance) {
     this.exerciseyList = document.body.querySelector('.exercise-list');
     this.limit = isMobile() ? 8 : 10;
     this.paginationInstance = paginationInstance;
-
+    console.log(this.exerciseyList);
+    this.exerciseyList.addEventListener('click', openExerciseModal);
+    
     if (!isIndexPage) return;
     (async function (instance) {
       const module = await import('./search.js');

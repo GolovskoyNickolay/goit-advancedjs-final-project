@@ -1,7 +1,7 @@
 import './css/styles.css';
 import './js/menu.js';
 import './js/header-sticky.js';
-import '/js/main-section/quote.js'
+import '/js/main-section/quote.js';
 import { openExerciseModal } from './js/modal.js';
 // NOTE: just sample how to use api methods/show errors
 import {
@@ -10,7 +10,7 @@ import {
   updateExerciseRating,
   getFilters,
   getQuoteOfTheDay,
-  subscribe
+  subscribe,
 } from './services/apiServices.js';
 
 async function init() {
@@ -26,19 +26,7 @@ async function init() {
   const quoteData = await getQuoteOfTheDay();
   const subscribeResponse = await subscribe('test@example.com');
 
-  console.log(data, data2, subscribeResponse, quoteData, filtersData)
+  console.log(data, data2, subscribeResponse, quoteData, filtersData);
 }
 
 // init();
-
-const openModalButton = document.querySelector('.open-modal');
-
-openModalButton.addEventListener('click', e => {
-  // const card = e.target.closest('.exercise-card');
-  // if (!card) return;
-
-  // const id = card.dataset.id;
-  const id = '64f389465ae26083f39b17ac';
-
-  openExerciseModal(id);
-});

@@ -5,7 +5,12 @@ const modal = document.getElementById('exerciseModal');
 const modalBody = document.querySelector('.modal-body');
 const closeBtn = document.querySelector('.modal-close');
 
-export const openExerciseModal = async id => {
+export const openExerciseModal = async event => {
+  const card = event.target.closest('.workout-card');
+  if (!card) return;
+
+  const id = card.dataset.id;
+
   modalOverlay.classList.add('is-open');
 
   try {
@@ -42,12 +47,9 @@ closeBtn.addEventListener('click', () => {
 //   "gifUrl": "https://ftp.goit.study/img/power-pulse/gifs/0014.gif",
 //   "name": "assisted motion russian twist",
 //   "target": "abs",
-//   "description": "This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.",
-//   "rating": 3.56,
-//   "burnedCalories": 212,
-//   "time": 3,
-//   "popularity": 1432
-// }
+//   "description": "This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for
+// maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.", "rating":
+// 3.56, "burnedCalories": 212, "time": 3, "popularity": 1432 }
 
 const createExerciseMarkup = exercise => {
   return `
@@ -60,11 +62,9 @@ const createExerciseMarkup = exercise => {
           <div class="exercise-rate">
             <p>${exercise.rating}</p>
             <div class="exercise-rating-stars">
-             ${[...Array(5)]
-               .map((_, index) => {
-                 return `<span class="star ${index < Math.round(exercise.rating) ? 'filled' : ''}">⭐</span>`;
-               })
-               .join('')}
+             ${[...Array(5)].map((_, index) => {
+    return `<span class="star ${index < Math.round(exercise.rating) ? 'filled' : ''}">⭐</span>`;
+  }).join('')}
             </div>
           </div>
 
