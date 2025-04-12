@@ -44,8 +44,7 @@ class Filter {
     this.exerciseInstance.hide();
     this.render();
 
-    this.path.start.innerHTML = 'Exercises';
-    this.path.part.innerHTML = '';
+    setActivePath(exercise);
     searchQueryParams.new('category', this.filter);
   };
 
@@ -54,6 +53,13 @@ class Filter {
       if (item.dataset.filter === filter) item.classList.add('active');
       else item.classList.remove('active');
     });
+  }
+
+  setActivePath(exercise = '') {
+    if (exercise) this.path.start.innerHTML = 'Exercises /';
+    else this.path.start.innerHTML = 'Exercises';
+
+    this.path.part.innerHTML = exercise;
   }
 
   async render(page = 1) {
@@ -112,8 +118,7 @@ class Filter {
     const { exercise } = li.dataset;
     this.exerciseInstance.init(this.filter, exercise);
 
-    this.path.start.innerHTML = 'Exercises /';
-    this.path.part.innerHTML = exercise;
+    setActivePath(exercise);
 
     searchQueryParams.set('exercise', exercise);
   };
