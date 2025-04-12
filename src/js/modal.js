@@ -74,6 +74,29 @@ export class ExerciseModal {
     `;
   }
 
+  createStars(rating) {
+    const fillPercent = (rating / 5) * 100;
+
+    return `
+    <div class="rating" style="--fill: ${fillPercent}%;">
+      <div class="rating-bg">
+        ${[...Array(5)].map(() => `
+          <svg class="star" width="18" height="18">
+            <use href="../img/icons.svg#icon-Star"></use>
+          </svg>
+        `).join('')}
+      </div>
+      <div class="rating-fill">
+        ${[...Array(5)].map(() => `
+          <svg class="star" width="18" height="18">
+            <use href="../img/icons.svg#icon-Star"></use>
+          </svg>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  }
+
   createExerciseMarkup() {
     const ex = this.exercise;
     return `
@@ -85,9 +108,7 @@ export class ExerciseModal {
 
             <div class="exercise-rate">
               <p>${ex.rating}</p>
-              <div class="exercise-rating-stars">
-                ${[...Array(5)].map((_, index) => `<span class="star ${index < Math.round(ex.rating) ? 'filled' : ''}">⭐</span>`).join('')}
-              </div>
+              ${this.createStars(ex.rating)}
             </div>
 
             <ul class="exercise-info">

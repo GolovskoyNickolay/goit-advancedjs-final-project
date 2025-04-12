@@ -44,7 +44,7 @@
   padding: 40px 20px;
   width: 335px;
   border-radius: 20px;
-  /*height: 825px;*/
+  min-height: 450px;
 }
 
 .exercise-details {
@@ -83,12 +83,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  margin-right: 2px;
-}
-
-.exercise-rating-stars {
-  display: flex;
-  gap: 2px;
+  margin-right: 4px;
 }
 
 .exercise-info {
@@ -179,4 +174,31 @@
     margin-top: 64px;
     justify-content: flex-end;
   }
+}
+
+.rating {
+  position: relative;
+  display: inline-flex;
+  --fill: 0;
+}
+
+.rating-bg,
+.rating-fill {
+  display: flex;
+  gap: 4px;
+}
+
+.rating-bg {
+  fill: #ccc;
+}
+
+.rating-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  fill: #ffc107;
+  clip-path: inset(0 calc(100% - var(--fill)) 0 0);
 }
