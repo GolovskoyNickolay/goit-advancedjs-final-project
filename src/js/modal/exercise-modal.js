@@ -28,7 +28,7 @@ export class ExerciseModal {
     const id = card.dataset.id;
 
     this.modalOverlay.classList.add('is-open');
-    this.modalBody.innerHTML = '<p class="loading">Loading...</p>';
+    this.modalBody.innerHTML = this.createSkeletonMarkup();
 
     try {
       this.exercise = await getExerciseById(id);
@@ -54,7 +54,7 @@ export class ExerciseModal {
 
   close() {
     this.modalOverlay.classList.remove('is-open');
-    this.modalBody.innerHTML = '';
+    // this.modalBody.innerHTML = '';
     this.exercise = null;
     this.isFavorite = false;
     this.isRatingOpen = false;
@@ -197,6 +197,30 @@ export class ExerciseModal {
       this.close();
     }
   };
+
+  createSkeletonMarkup() {
+    return `
+    <div class="exercise-details skeleton">
+      <div class="exercise-img skeleton-img"></div>
+      <div class="exercise-content">
+        <div class="skeleton-title"></div>
+        <div class="skeleton-rate"></div>
+        <ul class="exercise-info">
+          ${[...Array(5)].map(() => `
+            <li class="skeleton-info-item">
+              <div class="skeleton-line"></div>
+            </li>
+          `).join('')}
+        </ul>
+        <div class="skeleton-description"></div>
+        <div class="exercise-buttons">
+          <div class="skeleton-button"></div>
+          <div class="skeleton-button"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  }
 
 }
 

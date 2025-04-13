@@ -39,7 +39,7 @@ export class RatingModal {
 
   open(exerciseId) {
     this.exerciseId = exerciseId;
-
+    
     this.modalBody.innerHTML = `
       <div class="rating-modal">
         <span class="rating-modal-title">Rating</span>
@@ -68,7 +68,7 @@ export class RatingModal {
 
     const form = this.modalBody.querySelector('.rating-form');
     form.addEventListener('submit', (event) => this.handleSubmit(event));
-    
+
     this.setupStarsUpdate();
   }
 
