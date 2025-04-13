@@ -129,7 +129,7 @@ export class ExerciseModal {
     const ex = this.exercise;
     return `
       <div class="exercise-details">
-        ${!ex.gifUrl ? `<img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">` : ''}
+        ${ex.gifUrl ? `<img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">` : ''}
         <div class="exercise-content">
           <div>
             <h2 class="exercise-title">${ex.name}</h2>
