@@ -7,6 +7,10 @@
 @import './container.css';
 @import './header.css';
 @import './menu.css';
+@import './hero.css';
+@import './sidebar.css';
+@import './main-section/footer.css';
+@import './modal.css';
 
 :root {
   --white: #ffffff;

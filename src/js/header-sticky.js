@@ -33,3 +33,13 @@ const onWheel = () => {
 
 window.addEventListener('scroll', onScroll);
 document.addEventListener('wheel', onWheel);
+
+const menuLinks = document.querySelectorAll('.menu-items.router .menu-item a');
+
+menuLinks.forEach((link) => {
+  if (link.href === window.location.href || window.location.pathname.endsWith(link.getAttribute('href'))) {
+    link.parentElement.classList.add('active');
+  } else {
+    link.parentElement.classList.remove('active');
+  }
+});
