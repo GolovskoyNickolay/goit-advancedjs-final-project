@@ -3,13 +3,15 @@ import { isMobile } from '../utils';
 import { INVISIABLE_CLASS, FILTERS, INDEX_PATH } from './constants';
 
 export default class Exercise {
-  constructor(isIndexPage, paginationInstance) {
+  constructor(isIndexPage, paginationInstance, modalInstance) {
     this.exerciseyList = document.body.querySelector('.exercise-list');
     this.limit = isMobile() ? 8 : 10;
     this.paginationInstance = paginationInstance;
+    this.modalInstance = modalInstance;
+    this.exerciseyList.addEventListener('click', event => this.handleExerciseClick(event));
 
     if (!isIndexPage) return;
-    (async function (instance) {
+    (async function(instance) {
       const module = await import('./search.js');
       instance.searchForm = module.default;
     })(this);
@@ -27,6 +29,10 @@ export default class Exercise {
     this.render();
   }
 
+  handleExerciseClick(event) {
+    this.modalInstance.open(event);
+  }
+
   async render(page = 1) {
     try {
       const options = {
@@ -41,9 +47,7 @@ export default class Exercise {
       this.page = page;
       //   this.currentData = data;
 
-      this.exerciseyList.innerHTML = data.results
-        .map(el => Exercise.exerciseMarkup(el))
-        .join('');
+      this.exerciseyList.innerHTML = data.results.map(el => Exercise.exerciseMarkup(el)).join('');
       this.paginationInstance.render(data.totalPages, data.page);
       this.paginationInstance.callback = this.paginationExerciseCallback;
       this.show();
@@ -62,25 +66,25 @@ export default class Exercise {
     bodyPart,
     target,
   }, isFavourite = false) {
-    
-    
+
+
     return `<li class="workout-card" data-id="${_id}">
           <div class="workout-card-container">
             <div class="workout-header">
               <span class="workout-badge">WORKOUT</span>
               ${
-                isFavourite ?
-      `<button onclick="document.removeFavourite(this)" class="workout-remove-btn">
+      isFavourite ?
+        `<button onclick="document.removeFavourite(this)" class="workout-remove-btn">
                   <svg width="16" height="16" class="workout-remove-icon">
                     <use xlink:href="../img/icons.svg#icon-remove"></use>
                   </svg></button>`
-                : `<div class="workout-rating">
+        : `<div class="workout-rating">
                     <span class="workout-rating-value">${rating.toFixed(2)}</span>
                     <svg width="18" height="18" class="workout-rating-icon">
                       <use xlink:href="../img/icons.svg#icon-Star"></use>
                     </svg>
                   </div>`
-              }
+    }
               <a href="#" class="workout-start-btn"
                 >Start
                 <svg width="16" height="16" class="workout-start-icon">
@@ -128,6 +132,7 @@ export default class Exercise {
     this.exerciseyList.classList.remove(INVISIABLE_CLASS);
     this.exerciseyList.hidden = false;
   }
+
   hide() {
     this.exerciseyList.classList.add(INVISIABLE_CLASS);
     this.exerciseyList.hidden = true;

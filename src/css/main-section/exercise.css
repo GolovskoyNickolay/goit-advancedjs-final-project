@@ -90,6 +90,7 @@
 
 .workout-rating-icon {
   margin-right: auto;
+  fill: #eea10c;
 }
 
 .workout-start-btn {
@@ -157,9 +158,11 @@
   display: flex;
   gap: 2px;;
 }
+
 .workout-meta-name {
   flex: none;
 }
+
 .workout-meta-value {
   color: #242424;
   font-size: 12px;
@@ -175,6 +178,7 @@
 .workout-remove-btn:hover {
   color: red;
 }
+
 .workout-remove-icon {
   fill: currentColor;
 }

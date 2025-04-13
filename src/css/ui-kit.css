@@ -98,6 +98,16 @@ h1 {
   stroke: var(--offwhite);
 }
 
+.rate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  color: #f4f4f4;
+  border-radius: 30px;
+  border: 1px solid #f4f4f4;
+}
+
 .menu-items {
   display: flex;
   flex-direction: row;
