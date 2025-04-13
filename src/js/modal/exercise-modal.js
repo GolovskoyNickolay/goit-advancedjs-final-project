@@ -1,17 +1,24 @@
-import { getExerciseById } from '../services/apiServices.js';
-import { addFavouritesToStorage, isFavouritesExercise, removeFavouritesFromStorage } from './favourites.js';
+import { getExerciseById } from '../../services/apiServices.js';
+import { addFavouritesToStorage, isFavouritesExercise, removeFavouritesFromStorage } from '../favourites.js';
+import iziToast from 'izitoast';
+import { RatingModal } from './raiting-modal.js';
 
 export class ExerciseModal {
   constructor() {
     this.modalOverlay = document.querySelector('.modal-overlay');
     this.modal = document.getElementById('exerciseModal');
     this.modalBody = document.querySelector('.modal-body');
-    this.closeBtn = document.querySelector('.modal-close');
+    this.closeBtn = this.modal.querySelector('.modal-close');
+
+    this.ratingModal = new RatingModal(this.modalBody, this.render.bind(this));
 
     this.exercise = null;
     this.isFavorite = false;
+    this.isRatingOpen = false;
 
-    this.closeBtn.addEventListener('click', () => this.close());
+    this.handleOverlayClick = this.handleOverlayClick.bind(this);
+    this.handleEscKey = this.handleEscKey.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   async open(event) {
@@ -28,8 +35,18 @@ export class ExerciseModal {
       this.isFavorite = isFavouritesExercise(this.exercise._id);
 
       this.render();
-      this.addEventListeners();
+
+      this.modalOverlay.addEventListener('click', this.handleOverlayClick);
+      window.addEventListener('keydown', this.handleEscKey);
+      this.closeBtn.addEventListener('click', this.handleClose);
+
     } catch (error) {
+      iziToast.error({
+        title: 'Request exercise Error',
+        message: error?.message,
+        position: 'topRight',
+      });
+
       console.error(error);
       this.modalBody.innerHTML = '<p class="error">Failed to load exercise. Try again later.</p>';
     }
@@ -38,10 +55,18 @@ export class ExerciseModal {
   close() {
     this.modalOverlay.classList.remove('is-open');
     this.modalBody.innerHTML = '';
+    this.exercise = null;
+    this.isFavorite = false;
+    this.isRatingOpen = false;
+
+    this.modalOverlay.removeEventListener('click', this.handleOverlayClick);
+    this.closeBtn.removeEventListener('click', this.handleClose);
+    window.removeEventListener('keydown', this.handleEscKey);
   }
 
   render() {
     this.modalBody.innerHTML = this.createExerciseMarkup();
+    this.addEventListeners();
   }
 
   addEventListeners() {
@@ -49,7 +74,10 @@ export class ExerciseModal {
     const rateBtn = this.modal.querySelector('.rate-btn');
 
     favoritesBtn.addEventListener('click', () => this.toggleFavorite(favoritesBtn));
-    // Тут можеш додати обробку rateBtn
+    rateBtn.addEventListener('click', () => {
+      this.ratingModal.open(this.exercise._id);
+      this.isRatingOpen = true;
+    });
   }
 
   toggleFavorite(button) {
@@ -101,7 +129,7 @@ export class ExerciseModal {
     const ex = this.exercise;
     return `
       <div class="exercise-details">
-        <img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">
+        ${ex.gifUrl ? `<img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">` : ''}
         <div class="exercise-content">
           <div>
             <h2 class="exercise-title">${ex.name}</h2>
@@ -123,7 +151,7 @@ export class ExerciseModal {
           </div>
 
           <div class="exercise-buttons">
-            <button type="button" class="favorites-btn" data-id="${ex._id}">
+            <button type="button" class="favorites-btn primary-btn" data-id="${ex._id}">
               <span class="favorites-btn-text">
                 ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
               </span>
@@ -131,13 +159,45 @@ export class ExerciseModal {
                 <use href="../img/icons.svg#${this.isFavorite ? 'icon-trash' : 'icon-heart'}"></use>
               </svg>
             </button>
+            
+            <button type="button" class="rate-btn" data-id="${ex._id}">Give a rating</button>
           </div>
         </div>
       </div>
     `;
   }
-}
 
-// <button type="button" class="rate-btn" data-id="${ex._id}">Give a rating</button>
+  handleOverlayClick(event) {
+    if (event.target === this.modalOverlay) {
+      if (this.isRatingOpen) {
+        this.ratingModal.close();
+        this.isRatingOpen = false;
+      } else {
+        this.close();
+      }
+    }
+  }
+
+  handleEscKey(event) {
+    if (event.key === 'Escape') {
+      if (this.isRatingOpen) {
+        this.ratingModal.close();
+        this.isRatingOpen = false;
+      } else {
+        this.close();
+      }
+    }
+  }
+
+  handleClose(event) {
+    if (this.isRatingOpen) {
+      this.ratingModal.close();
+      this.isRatingOpen = false;
+    } else {
+      this.close();
+    }
+  };
+
+}
 
 
