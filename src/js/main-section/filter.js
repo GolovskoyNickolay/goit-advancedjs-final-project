@@ -44,7 +44,7 @@ class Filter {
     this.exerciseInstance.hide();
     this.render();
 
-    setActivePath(exercise);
+    this.setActivePath();
     searchQueryParams.new('category', this.filter);
   };
 
@@ -118,7 +118,7 @@ class Filter {
     const { exercise } = li.dataset;
     this.exerciseInstance.init(this.filter, exercise);
 
-    setActivePath(exercise);
+    this.setActivePath(exercise);
 
     searchQueryParams.set('exercise', exercise);
   };
