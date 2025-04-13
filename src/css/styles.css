@@ -15,7 +15,7 @@
 :root {
   --white: #ffffff;
   --offwhite: #f4f4f4;
-  --light-gray: #ddd;
+  --light-gray: rgba(244, 244, 244, 0.6);
   --text-dark: #333;
   --dark-hover: #444;
   --dark: #242424;
@@ -41,7 +41,7 @@
 
 body {
   overflow-y: scroll;
-
+  scrollbar-gutter: stable both-edges;
   font-size: 14px;
 }
 

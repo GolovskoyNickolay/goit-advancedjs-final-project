@@ -64,7 +64,6 @@
   flex-direction: column;
   justify-content: space-between;
   color: var(--offwhite);
-
 }
 
 .exercise-title {
@@ -113,7 +112,7 @@
 }
 
 .exercise-description {
-  color: rgba(244, 244, 244, 0.6);
+  color: var(--light-gray);
 }
 
 .exercise-buttons {
