@@ -1,4 +1,9 @@
 .main-section {
+  max-height: 11500px;
+  /* transition: max-height 0.25s ease-in; */
+  transition-property: max-height, height;
+  transition-duration: 250ms;
+  height: auto;
 }
 @media only screen and (min-width: 1440px) {
   .main-content {

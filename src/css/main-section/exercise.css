@@ -8,10 +8,14 @@
   margin: 0;
   padding: 0;
   justify-content: center;
+  max-height: 1200px;
+  transition-property: max-height;
+  transition-duration: 500ms;
+  overflow: hidden;
 }
 
 .exercise-list.invisiable {
-  display: none;
+  max-height: 0;
 }
 
 @media only screen and (min-width: 768px) {
