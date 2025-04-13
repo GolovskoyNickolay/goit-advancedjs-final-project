@@ -15,14 +15,7 @@ class Search {
       const { value } = event.currentTarget['search'];
       this.#callback && this.#callback(value);
     });
-    // this.input.addEventListener('input', this.onInputChanged);
   }
-
-  // onInputChanged = ({ currentTarget }) => {
-  //   if (currentTarget.value === '') {
-  //     this.#callback && this.#callback('');
-  //   }
-  // };
 
   set callback(callback) {
     if (typeof callback === 'function') this.#callback = callback;

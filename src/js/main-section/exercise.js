@@ -64,9 +64,12 @@ export default class Exercise {
       this.paginationInstance.render(data.totalPages, data.page);
       this.paginationInstance.callback = this.paginationExerciseCallback;
       this.show();
-      // console.log(data);
     } catch (error) {
-      // console.error(error);
+      iziToast.error({
+        title: 'Unexpected error',
+        message: 'Try to refresh the page',
+        position: 'topRight',
+      });
     }
   }
 
@@ -132,7 +135,6 @@ export default class Exercise {
   };
 
   searchCallback = keyword => {
-    // if (keyword === this.keyword) return;
     this.keyword = keyword || '';
     if (keyword) searchQueryParams.set('keyword', keyword);
     else searchQueryParams.delete('keyword');

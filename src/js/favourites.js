@@ -1,16 +1,5 @@
 import { NAME_OF_STORAGE, TEXT_IF_EMPTY } from './main-section/constants';
-import { getExercises } from '../services/apiServices';
 import Exercise from './main-section/exercise';
-
-// getExercises({ bodypart: 'back' })
-//     .then(data => {
-//         data.results.forEach(exercise => {
-//             addFavouritesToStorage(exercise);
-//         });
-//     })
-//     .catch(error => {
-//         console.error('Error fetching exercises:', error);
-//     });
 
 export function isFavouritesExercise(id) {
   const exercises = getExercisesFromStorage(NAME_OF_STORAGE);

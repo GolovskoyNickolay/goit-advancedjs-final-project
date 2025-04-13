@@ -35,9 +35,6 @@ class Filter {
   onClick = ({ target }) => {
     if (target.nodeName !== 'LI') return;
 
-    // this.items.forEach(item => item.classList.remove('active'));
-    // target.classList.add('active');
-
     this.filter = target.dataset.filter;
     this.setActiveFilter(this.filter);
 
@@ -69,7 +66,6 @@ class Filter {
         limit: this.limit,
         page,
       });
-      //   this.currentData = data;
 
       if (data.results.length) {
         this.errorHide();
@@ -87,9 +83,12 @@ class Filter {
       this.searchForm?.hide();
 
       this.show();
-      // console.log(data);
     } catch (error) {
-      // console.error(error);
+      iziToast.error({
+        title: 'Unexpected error',
+        message: 'Try to refresh the page',
+        position: 'topRight',
+      });
     }
   }
 
