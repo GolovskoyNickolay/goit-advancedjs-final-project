@@ -25,6 +25,8 @@
   --input-border-focus: #888;
   --input-text: #333;
   --placeholder-color: #999;
+
+  --quote-text: #d4d4d4;
   --search-height: 40px;
   --search-border-radius: 20px;
   --button-color: #333;
@@ -39,6 +41,8 @@
 
 body {
   overflow-y: scroll;
+
+  font-size: 14px;
 }
 
 a {
