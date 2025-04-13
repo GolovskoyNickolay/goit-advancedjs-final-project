@@ -1,6 +1,6 @@
 import Exercise from './exercise';
 import Filter from './filter';
-import { ExerciseModal } from '../modal.js';
+import { ExerciseModal } from '../modal/exercise-modal.js';
 
 async function initMainSection() {
   const modulePagination = await import('./pagination.js');

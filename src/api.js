@@ -16,7 +16,7 @@ api.interceptors.response.use(
   error => {
     if (error.response && error.response.status === 409) {
       const serverMessage =
-        error.response.data?.message || 'Subscription already exists';
+              error.response.data?.message || 'Subscription already exists';
 
       iziToast.error({
         title: 'Subscription Error',
@@ -35,7 +35,7 @@ api.interceptors.response.use(
 
       return { data: null };
     }
-  }
+  },
 );
 
 export default api;
