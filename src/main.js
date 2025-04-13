@@ -1,7 +1,7 @@
 import './css/styles.css';
 import './js/menu.js';
 import './js/header-sticky.js';
-
+import '/js/main-section/quote.js';
 // NOTE: just sample how to use api methods/show errors
 import {
   getExercises,
@@ -21,11 +21,11 @@ import {
 //     page: 2,
 //     limit: 10,
 //   });
-
+//
 //   const quoteData = await getQuoteOfTheDay();
 //   const subscribeResponse = await subscribe('test@example.com');
-
-//   console.log(data, data2, subscribeResponse, quoteData, filtersData)
+//
+//   console.log(data, data2, subscribeResponse, quoteData, filtersData);
 // }
 
 // init();

@@ -9,6 +9,7 @@
   .main-content {
     display: flex;
     flex-direction: row-reverse;
+    gap: 20px;
   }
 
   .filter-header {

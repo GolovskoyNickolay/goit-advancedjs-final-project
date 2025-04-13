@@ -4,11 +4,15 @@ import { INVISIABLE_CLASS, FILTERS } from './constants';
 import searchQueryParams from './searchParams.js';
 
 export default class Exercise {
-  constructor(isIndexPage, paginationInstance) {
+  constructor(isIndexPage, paginationInstance, modalInstance) {
     this.exerciseyList = document.body.querySelector('.exercise-list');
     this.limit = isMobile() ? 8 : 10;
     this.paginationInstance = paginationInstance;
     this.errorElement = document.body.querySelector('[data-exerciseError]');
+    this.modalInstance = modalInstance;
+    this.exerciseyList.addEventListener('click', event =>
+      this.handleExerciseClick(event)
+    );
 
     if (!isIndexPage) return;
     (async function (instance) {
@@ -28,6 +32,10 @@ export default class Exercise {
       this.searchForm.callback = this.searchCallback;
     }
     this.render(page);
+  }
+
+  handleExerciseClick(event) {
+    this.modalInstance.open(event);
   }
 
   async render(page = 1) {
@@ -136,6 +144,7 @@ export default class Exercise {
     this.exerciseyList.classList.remove(INVISIABLE_CLASS);
     this.exerciseyList.hidden = false;
   }
+
   hide() {
     this.exerciseyList.classList.add(INVISIABLE_CLASS);
     this.exerciseyList.hidden = true;
