@@ -68,7 +68,9 @@ function renderList() {
 
   const list = document.createElement('ul');
   list.classList.add('exercise-list');
-  list.innerHTML = exercises.map(el => Exercise.exerciseMarkup(el, true)).join('');
+  list.innerHTML = exercises
+    .map(el => Exercise.exerciseMarkup(el, true))
+    .join('');
   refs.list.innerHTML = '';
   refs.list.appendChild(list);
 }
@@ -77,12 +79,18 @@ function renderEmpty() {
   refs.list.innerHTML = `<p class="text">${TEXT_IF_EMPTY}</p>`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderList();
-});
+function init() {
+  document.addEventListener('DOMContentLoaded', () => {
+    renderList();
+  });
 
-document.removeFavourite = function(element) {
-  const id = element.closest('[data-id]').dataset.id;
-  removeFavouritesFromStorage(id);
-  renderList();
-};
+  document.removeFavourite = function (element) {
+    const id = element.closest('[data-id]').dataset.id;
+    removeFavouritesFromStorage(id);
+    renderList();
+  };
+}
+
+if (window.location.pathname.includes('favorites.html')) {
+  init();
+}

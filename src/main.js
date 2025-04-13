@@ -2,6 +2,7 @@
 import './js/menu.js';
 import './js/header-sticky.js';
 import '/js/main-section/quote.js';
+import './js/footer.js';
 // NOTE: just sample how to use api methods/show errors
 import {
   getExercises,
