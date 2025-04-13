@@ -14,7 +14,7 @@
 
         <!-- Filters -->
         <ul class="filters-list">
-          <li class="filters-item active" data-filter="Muscles">Muscles</li>
+          <li class="filters-item" data-filter="Muscles">Muscles</li>
           <li class="filters-item" data-filter="Body parts">Body parts</li>
           <li class="filters-item" data-filter="Equipment">Equipment</li>
         </ul>
@@ -26,8 +26,10 @@
       <section class="main-cards">
         <!-- Category Cards--->
         <ul class="category-list"></ul>
+        <p class="text error-message invisiable" data-categoryError hidden></p>
         <!-- Exercise Cards--->
         <ul class="exercise-list"></ul>
+        <p class="text error-message invisiable" data-exerciseError hidden></p>
         <!-- Pagination -->
         <load src="partials/pagination.html" />
       </section>

@@ -18,11 +18,11 @@ class Search {
     // this.input.addEventListener('input', this.onInputChanged);
   }
 
-  //   onInputChanged = ({ currentTarget }) => {
-  //     if (currentTarget.value === '') {
-  //       this.#callback && this.#callback('');
-  //     }
-  //   };
+  // onInputChanged = ({ currentTarget }) => {
+  //   if (currentTarget.value === '') {
+  //     this.#callback && this.#callback('');
+  //   }
+  // };
 
   set callback(callback) {
     if (typeof callback === 'function') this.#callback = callback;
@@ -30,6 +30,10 @@ class Search {
 
   get callback() {
     return;
+  }
+
+  setValue(value) {
+    this.input.value = value;
   }
 
   show() {
