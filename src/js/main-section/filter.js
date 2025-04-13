@@ -1,6 +1,7 @@
 import { getFilters } from '../../services/apiServices';
 import { capitalizeFirstLetter, findClosestParrent, isMobile } from '../utils';
-import { INDEX_PATH, INVISIABLE_CLASS } from './constants';
+import { INVISIABLE_CLASS } from './constants';
+import searchQueryParams from './searchParams.js';
 
 class Filter {
   constructor(isIndexPage, exerciseInstance, paginationInstance) {
@@ -21,6 +22,8 @@ class Filter {
 
     this.limit = isMobile() ? 9 : 12;
 
+    this.errorElement = document.body.querySelector('[data-categoryError]');
+
     if (!isIndexPage) return;
 
     (async function (instance) {
@@ -32,17 +35,32 @@ class Filter {
   onClick = ({ target }) => {
     if (target.nodeName !== 'LI') return;
 
-    this.items.forEach(item => item.classList.remove('active'));
-    target.classList.add('active');
+    // this.items.forEach(item => item.classList.remove('active'));
+    // target.classList.add('active');
 
     this.filter = target.dataset.filter;
+    this.setActiveFilter(this.filter);
 
     this.exerciseInstance.hide();
     this.render();
 
-    this.path.start.innerHTML = 'Exercises';
-    this.path.part.innerHTML = '';
+    this.setActivePath();
+    searchQueryParams.new('category', this.filter);
   };
+
+  setActiveFilter(filter) {
+    this.items.forEach(item => {
+      if (item.dataset.filter === filter) item.classList.add('active');
+      else item.classList.remove('active');
+    });
+  }
+
+  setActivePath(exercise = '') {
+    if (exercise) this.path.start.innerHTML = 'Exercises /';
+    else this.path.start.innerHTML = 'Exercises';
+
+    this.path.part.innerHTML = exercise;
+  }
 
   async render(page = 1) {
     try {
@@ -53,9 +71,16 @@ class Filter {
       });
       //   this.currentData = data;
 
-      this.categoryList.innerHTML = data.results
-        .map(Filter.categoryMarkup)
-        .join('');
+      if (data.results.length) {
+        this.errorHide();
+        this.categoryList.innerHTML = data.results
+          .map(Filter.categoryMarkup)
+          .join('');
+      } else {
+        this.categoryList.innerHTML = '';
+        this.errorShow();
+      }
+
       this.paginationInstance.render(data.totalPages, data.page);
       this.paginationInstance.callback = this.paginationCategoryCallback;
 
@@ -69,7 +94,7 @@ class Filter {
   }
 
   static categoryMarkup({ imgURL, name, filter }) {
-    return `<li class="category-card" data-muscle="abductors" data-exercise="${name}">
+    return `<li class="category-card" data-muscle="${filter}" data-exercise="${name}">
           <img
             src="${imgURL}"
             alt="Image shows exercise ${name}"
@@ -90,10 +115,12 @@ class Filter {
     const li = findClosestParrent(target, 'LI', 'UL');
     if (!li) return;
     this.hide();
-    this.exerciseInstance.init(this.filter, li.dataset.exercise);
+    const { exercise } = li.dataset;
+    this.exerciseInstance.init(this.filter, exercise);
 
-    this.path.start.innerHTML = 'Exercises /';
-    this.path.part.innerHTML = li.dataset.exercise;
+    this.setActivePath(exercise);
+
+    searchQueryParams.set('exercise', exercise);
   };
 
   show() {
@@ -103,6 +130,19 @@ class Filter {
   hide() {
     this.categoryList.classList.add(INVISIABLE_CLASS);
     this.categoryList.hidden = true;
+    this.errorHide();
+  }
+
+  errorShow(text = 'Category was not found') {
+    this.errorElement.innerHTML = text;
+    this.errorElement.classList.remove(INVISIABLE_CLASS);
+    this.errorElement.hidden = false;
+  }
+
+  errorHide() {
+    this.errorElement.innerHTML = '';
+    this.errorElement.classList.add(INVISIABLE_CLASS);
+    this.errorElement.hidden = true;
   }
 }
 
