@@ -27,12 +27,9 @@
 }
 
 .filter-path-start {
-  /* font-family: var(--font-family); */
   font-weight: 400;
   font-size: 28px;
   line-height: 136%;
-  /* letter-spacing: -0.02em; */
-  /* color: #242424; */
   display: inline;
 }
 
@@ -89,7 +86,6 @@
 
 .filters-item {
   position: relative;
-  /* overflow: hidden; */
 }
 
 .filters-item:hover {
@@ -101,7 +97,6 @@
   display: block;
   position: absolute;
   bottom: 0px;
-  /* left: -100%; */
   left: 50%;
   border-radius: 2px;
   background-color: #242424;
@@ -116,5 +111,4 @@
 .filters-item.active::before {
   width: 100%;
   left: 0;
-  /* left: 0; */
 }

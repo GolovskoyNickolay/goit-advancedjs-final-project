@@ -6,10 +6,10 @@
   border: 1px solid var(--input-border);
   border-radius: var(--search-border-radius);
   overflow: hidden;
-  transition: border-color 0.2s ease;
 
-  transition-property: height;
-  transition-duration: 250ms;
+  transition-property: height, border-color;
+  transition-duration: 250ms, 250ms;
+  height: 44px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -24,8 +24,8 @@
 }
 
 .search-form.invisiable {
-  display: none;
-  /* pointer-events: none; */
+  /* display: none; */
+  pointer-events: none;
   height: 0px;
   border: 0px;
 }

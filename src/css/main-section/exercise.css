@@ -11,7 +11,6 @@
   max-height: 2000px;
   transition-property: max-height;
   transition-duration: 500ms;
-  /* overflow: hidden; */
 }
 
 .exercise-list.invisiable {
