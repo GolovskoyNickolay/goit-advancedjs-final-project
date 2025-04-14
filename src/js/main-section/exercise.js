@@ -19,10 +19,16 @@ export default class Exercise {
     (async function (instance) {
       const module = await import('./search.js');
       instance.searchForm = module.default;
+
+      if (instance.onloalLibrariesCallback) instance.onloalLibrariesCallback();
     })(this);
   }
 
   init(filter, exercise, keyword = '', page = 1) {
+    if (this.timeoutID) {
+      clearTimeout(this.timeoutID);
+      this.timeoutID = null;
+    }
     this.show();
     this.filter = filter;
     this.exercise = exercise;
@@ -152,6 +158,9 @@ export default class Exercise {
     this.exerciseyList.classList.add(INVISIABLE_CLASS);
     this.exerciseyList.hidden = true;
     this.errorHide();
+    this.timeoutID = setTimeout(() => {
+      this.exerciseyList.innerHTML = '';
+    }, 150);
   }
 
   errorShow(text = 'Exersice was not found') {

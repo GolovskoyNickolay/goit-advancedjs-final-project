@@ -17,11 +17,11 @@ async function initMainSection() {
   );
 
   if (category && exercise) {
-    setTimeout(() => {
+    exerciseInstance.onloalLibrariesCallback = () => {
       exerciseInstance.init(category, exercise, keyword, page);
       filterInstance.setActiveFilter(category);
       filterInstance.setActivePath(exercise);
-    }, 50);
+    };
   } else if (category) {
     const index = ['Muscles', 'Body parts', 'Equipment'].indexOf(category);
     filterInstance.onClick({
