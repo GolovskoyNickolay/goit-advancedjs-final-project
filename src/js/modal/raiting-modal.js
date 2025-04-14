@@ -9,7 +9,9 @@ export class RatingModal {
   }
 
   setupStarsUpdate() {
-    const ratingInputs = this.modalBody.querySelectorAll('input[name="rating"]');
+    const ratingInputs = this.modalBody.querySelectorAll(
+      'input[name="rating"]'
+    );
     const ratingValue = this.modalBody.querySelector('.rating-options-value');
 
     ratingInputs.forEach(input => {
@@ -24,14 +26,18 @@ export class RatingModal {
       <div class="rating-options-wrapper">
         <span class="rating-options-value">0.0</span>
         <div class="rating-options">
-          ${[5, 4, 3, 2, 1].map(value => `
+          ${[5, 4, 3, 2, 1]
+            .map(
+              value => `
             <input type="radio" id="star${value}" name="rating" value="${value}" />
             <label for="star${value}" class="rating-label">
               <svg class="rating-star" width="24" height="24">
-                <use href="../img/icons.svg#icon-Star"></use>
+                <use href="./img/icons.svg#icon-Star"></use>
               </svg>
             </label>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
   `;
@@ -39,7 +45,7 @@ export class RatingModal {
 
   open(exerciseId) {
     this.exerciseId = exerciseId;
-    
+
     this.modalBody.innerHTML = `
       <div class="rating-modal">
         <span class="rating-modal-title">Rating</span>
@@ -67,7 +73,7 @@ export class RatingModal {
     `;
 
     const form = this.modalBody.querySelector('.rating-form');
-    form.addEventListener('submit', (event) => this.handleSubmit(event));
+    form.addEventListener('submit', event => this.handleSubmit(event));
 
     this.setupStarsUpdate();
   }
