@@ -1,9 +1,10 @@
-const form = document.querySelector('.subscribe-form');
-const input = form.querySelector('input');
 import iziToast from 'izitoast';
 
-form.addEventListener('submit', async e => {
+const form = document.querySelector('.subscribe-form');
+
+form?.addEventListener('submit', async e => {
   e.preventDefault();
+  const input = form.querySelector('input');
   const email = input.value.trim();
   const isValid = input.checkValidity();
   if (!isValid) {

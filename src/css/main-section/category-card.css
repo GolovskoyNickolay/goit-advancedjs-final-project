@@ -7,14 +7,15 @@
   padding: 0;
   justify-content: center;
   height: fit-content;
-  max-height: 1200px;
-  transition-property: max-height;
+  max-height: 100%;
+  transition-property: opacity, max-height;
   transition-duration: 500ms;
-  overflow: hidden;
 }
 
 .category-list.invisiable {
   max-height: 0px;
+  overflow: hidden;
+  opacity: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -31,8 +32,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 280px;
-  height: 225px;
+  width: 100%;
+  max-height: 255px;
+  aspect-ratio: 335/255;
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;

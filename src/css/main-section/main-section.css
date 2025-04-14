@@ -4,6 +4,14 @@
   transition-duration: 250ms;
   height: auto;
 }
+.main-content {
+  padding-bottom: 60px;
+}
+@media only screen and (min-width: 768px) {
+  .main-content {
+    padding-bottom: 100px;
+  }
+}
 @media only screen and (min-width: 1440px) {
   .main-content {
     display: flex;

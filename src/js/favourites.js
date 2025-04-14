@@ -65,7 +65,7 @@ function renderList() {
 }
 
 function renderEmpty() {
-  refs.list.innerHTML = `<p class="text">${TEXT_IF_EMPTY}</p>`;
+  refs.list.innerHTML = `<div class="favourites-not-found"><p>${TEXT_IF_EMPTY}</p></div>`;
 }
 
 function init() {

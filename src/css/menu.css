@@ -65,6 +65,18 @@ body:has(.backdrop.is-open) {
   margin: 20px;
 }
 
+.menu-items-wrap {
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .menu-items {
   display: flex;
   flex-direction: column;
@@ -74,7 +86,7 @@ body:has(.backdrop.is-open) {
   color: var(--white);
   font-weight: 600;
   line-height: 1.28;
-  box-shadow: none;
+  pointer-events: all;
 }
 
 .menu-item {
@@ -106,6 +118,5 @@ body:has(.backdrop.is-open) {
 }
 
 .social-icon {
-  stroke: var(--white);
-  fill: var(--white);
+  fill: var(--offwhite);
 }

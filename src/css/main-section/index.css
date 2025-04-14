@@ -6,4 +6,11 @@
 
 .main-cards {
   width: 100%;
+  margin-bottom: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+  .main-cards {
+    margin-bottom: 64px;
+  }
 }
