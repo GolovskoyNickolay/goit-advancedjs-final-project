@@ -1,6 +1,8 @@
 import iziToast from 'izitoast';
 import { updateExerciseRating } from '../../services/apiServices.js';
 
+import spriteUrl from '../../img/icons.svg';
+
 export class RatingModal {
   constructor(modalBody, backToExercise) {
     this.modalBody = modalBody;
@@ -32,7 +34,7 @@ export class RatingModal {
             <input type="radio" id="star${value}" name="rating" value="${value}" />
             <label for="star${value}" class="rating-label">
               <svg class="rating-star" width="24" height="24">
-                <use href="./img/icons.svg#icon-Star"></use>
+                <use href="${spriteUrl}#icon-Star"></use>
               </svg>
             </label>
           `

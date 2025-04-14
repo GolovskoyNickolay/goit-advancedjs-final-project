@@ -2,6 +2,7 @@ import { getExercises } from '../../services/apiServices';
 import { isMobile } from '../utils';
 import { INVISIABLE_CLASS, FILTERS } from './constants';
 import searchQueryParams from './searchParams.js';
+import spriteUrl from '../../img/icons.svg';
 
 export default class Exercise {
   constructor(isIndexPage, paginationInstance, modalInstance) {
@@ -85,27 +86,27 @@ export default class Exercise {
                 isFavourite
                   ? `<button onclick="document.removeFavourite(this)" class="workout-remove-btn">
                   <svg width="16" height="16" class="workout-remove-icon">
-                    <use xlink:href="./img/icons.svg#icon-remove"></use>
+                    <use xlink:href="${spriteUrl}#icon-remove"></use>
                   </svg></button>`
                   : `<div class="workout-rating">
                     <span class="workout-rating-value">${rating.toFixed(
                       2
                     )}</span>
                     <svg width="18" height="18" class="workout-rating-icon">
-                      <use xlink:href="./img/icons.svg#icon-Star"></use>
+                      <use xlink:href="${spriteUrl}#icon-Star"></use>
                     </svg>
                   </div>`
               }
               <a href="#" class="workout-start-btn"
                 >Start
                 <svg width="16" height="16" class="workout-start-icon">
-                  <use xlink:href="./img/icons.svg#icon-start"></use>
+                  <use xlink:href="${spriteUrl}#icon-start"></use>
                 </svg>
               </a>
             </div>
             <div class="workout-body">
               <svg width="24" height="24" class="workout-icon">
-                <use xlink:href="./img/icons.svg#icon-running"></use>
+                <use xlink:href="${spriteUrl}#icon-running"></use>
               </svg>
               <h3 class="workout-title">${name}</h3>
             </div>

@@ -8,10 +8,9 @@
   margin: 0;
   padding: 0;
   justify-content: center;
-  max-height: 1200px;
+  max-height: 2000px;
   transition-property: max-height;
   transition-duration: 500ms;
-  overflow: hidden;
 }
 
 .exercise-list.invisiable {
