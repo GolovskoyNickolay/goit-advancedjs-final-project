@@ -60,7 +60,7 @@
 
 @media only screen and (min-width: 768px) {
   .sidebar-container-favoutite {
-    grid-template-columns: repeat(2, 1fr);
+    /*grid-template-columns: repeat(2, 1fr);*/
     grid-template-rows: auto 140px;
   }
   .sidebar-container-favoutite .sidebar-quote-container {
@@ -81,7 +81,7 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  
+
   .main-content-favourites {
     padding-bottom: 63px;
     display: grid;
