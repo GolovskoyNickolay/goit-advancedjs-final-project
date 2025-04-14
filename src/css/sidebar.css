@@ -142,3 +142,9 @@
 .sidebar-container-favoutite .fav-picture {
   aspect-ratio: 335/120;
 }
+
+@media screen and (max-width: 1440px) {
+  .sidebar-container-favoutite .fav-picture {
+    aspect-ratio: unset;
+  }
+}
