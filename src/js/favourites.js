@@ -69,7 +69,15 @@ function renderList() {
   refs.list.innerHTML = '';
   refs.list.appendChild(list);
 
-  list.addEventListener('click', modalInstance.open.bind(modalInstance));
+  list.addEventListener('click', event => {
+    if (
+      event.target.closest('button') &&
+      event.target.closest('button').classList.has('workout-remove-btn')
+    )
+      return;
+
+    modalInstance.open(event);
+  });
 }
 
 function renderEmpty() {
