@@ -62,6 +62,11 @@
   transform: scale(1.05);
 }
 
+.icon-row-black .icon:hover svg {
+  fill: var(--text-dark);
+  stroke: var(--text-dark);
+}
+
 .slogan {
   font-size: 38px;
   font-weight: 400;
