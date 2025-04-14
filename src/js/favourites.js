@@ -1,6 +1,8 @@
 import { NAME_OF_STORAGE, TEXT_IF_EMPTY } from './main-section/constants';
 import Exercise from './main-section/exercise';
+import { ExerciseModal } from './modal/exercise-modal';
 
+let modalInstance;
 export function isFavouritesExercise(id) {
   const exercises = getExercisesFromStorage(NAME_OF_STORAGE);
 
@@ -10,7 +12,7 @@ export function isFavouritesExercise(id) {
 export function addFavouritesToStorage(data) {
   const exercises = getExercisesFromStorage(NAME_OF_STORAGE);
   exercises[data._id] = data;
-  localStorage.setItem(NAME_OF_STORAGE, JSON.stringify(exercises));
+  setItemToLocalStorage(NAME_OF_STORAGE, JSON.stringify(exercises));
 }
 
 export function removeFavouritesFromStorage(id) {
@@ -20,8 +22,12 @@ export function removeFavouritesFromStorage(id) {
   } else {
     console.warn(`Exercise with id ${id} does not exist in storage.`);
   }
-  localStorage.setItem(NAME_OF_STORAGE, JSON.stringify(exercises));
+  setItemToLocalStorage(NAME_OF_STORAGE, JSON.stringify(exercises));
 }
+
+let setItemToLocalStorage = function (key, value) {
+  localStorage.setItem(key, value);
+};
 
 const refs = {
   list: document.getElementById('favourites'),
@@ -62,6 +68,16 @@ function renderList() {
     .join('');
   refs.list.innerHTML = '';
   refs.list.appendChild(list);
+
+  list.addEventListener('click', event => {
+    if (
+      event.target.closest('button') &&
+      event.target.closest('button').classList.has('workout-remove-btn')
+    )
+      return;
+
+    modalInstance.open(event);
+  });
 }
 
 function renderEmpty() {
@@ -81,5 +97,12 @@ function init() {
 }
 
 if (window.location.pathname.includes('favorites.html')) {
+  modalInstance = new ExerciseModal();
+  setItemToLocalStorage = function (key, value) {
+    localStorage.setItem(key, value);
+
+    renderList();
+  };
+
   init();
 }

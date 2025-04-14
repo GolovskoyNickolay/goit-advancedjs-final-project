@@ -39,3 +39,19 @@
 .main-section .static-info {
   display: none;
 }
+
+.main-section .exercise-list {
+  padding-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .main-section .exercise-list {
+    margin-top: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-section .exercise-list {
+    margin-top: 0;
+  }
+}

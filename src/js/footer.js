@@ -1,6 +1,14 @@
+import iziToast from 'izitoast';
 const form = document.querySelector('.subscribe-form');
 const input = form.querySelector('input');
-import iziToast from 'izitoast';
+
+Array.from(document.body.querySelectorAll('.footer-links a')).forEach(
+  element => {
+    element.addEventListener('click', event => {
+      event.preventDefault();
+    });
+  }
+);
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
