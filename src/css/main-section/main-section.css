@@ -1,6 +1,5 @@
 .main-section {
   max-height: 11500px;
-  /* transition: max-height 0.25s ease-in; */
   transition-property: max-height, height;
   transition-duration: 250ms;
   height: auto;
@@ -90,7 +89,7 @@
 
 .filters-item {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .filters-item:hover {

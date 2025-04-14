@@ -6,6 +6,7 @@ import {
 } from '../favourites.js';
 import iziToast from 'izitoast';
 import { RatingModal } from './raiting-modal.js';
+import spriteUrl from '../../img/icons.svg';
 
 export class ExerciseModal {
   constructor() {
@@ -102,9 +103,9 @@ export class ExerciseModal {
         ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       </span>
       <svg class="icon-heart" height="18" width="20">
-        <use href="./img/icons.svg#${
-          this.isFavorite ? 'icon-trash' : 'icon-heart'
-        }"></use>
+        <use href="${spriteUrl}#${
+      this.isFavorite ? 'icon-trash' : 'icon-heart'
+    }"></use>
       </svg>
     `;
   }
@@ -119,7 +120,7 @@ export class ExerciseModal {
           .map(
             () => `
           <svg class="star" width="18" height="18">
-            <use href="./img/icons.svg#icon-Star"></use>
+            <use href="${spriteUrl}#icon-Star"></use>
           </svg>
         `
           )
@@ -130,7 +131,7 @@ export class ExerciseModal {
           .map(
             () => `
           <svg class="star" width="18" height="18">
-            <use href="./img/icons.svg#icon-Star"></use>
+            <use href="${spriteUrl}#icon-Star"></use>
           </svg>
         `
           )
@@ -179,9 +180,9 @@ export class ExerciseModal {
                 }
               </span>
               <svg class="icon-heart" height="18" width="20">
-                <use href="./img/icons.svg#${
-                  this.isFavorite ? 'icon-trash' : 'icon-heart'
-                }"></use>
+                <use href="${spriteUrl}#${
+      this.isFavorite ? 'icon-trash' : 'icon-heart'
+    }"></use>
               </svg>
             </button>
             
