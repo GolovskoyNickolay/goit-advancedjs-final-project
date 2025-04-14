@@ -1,16 +1,5 @@
 import { NAME_OF_STORAGE, TEXT_IF_EMPTY } from './main-section/constants';
-import { getExercises } from '../services/apiServices';
 import Exercise from './main-section/exercise';
-
-// getExercises({ bodypart: 'back' })
-//     .then(data => {
-//         data.results.forEach(exercise => {
-//             addFavouritesToStorage(exercise);
-//         });
-//     })
-//     .catch(error => {
-//         console.error('Error fetching exercises:', error);
-//     });
 
 export function isFavouritesExercise(id) {
   const exercises = getExercisesFromStorage(NAME_OF_STORAGE);
@@ -68,7 +57,9 @@ function renderList() {
 
   const list = document.createElement('ul');
   list.classList.add('exercise-list');
-  list.innerHTML = exercises.map(el => Exercise.exerciseMarkup(el, true)).join('');
+  list.innerHTML = exercises
+    .map(el => Exercise.exerciseMarkup(el, true))
+    .join('');
   refs.list.innerHTML = '';
   refs.list.appendChild(list);
 }
@@ -77,12 +68,18 @@ function renderEmpty() {
   refs.list.innerHTML = `<p class="text">${TEXT_IF_EMPTY}</p>`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderList();
-});
+function init() {
+  document.addEventListener('DOMContentLoaded', () => {
+    renderList();
+  });
 
-document.removeFavourite = function(element) {
-  const id = element.closest('[data-id]').dataset.id;
-  removeFavouritesFromStorage(id);
-  renderList();
-};
+  document.removeFavourite = function (element) {
+    const id = element.closest('[data-id]').dataset.id;
+    removeFavouritesFromStorage(id);
+    renderList();
+  };
+}
+
+if (window.location.pathname.includes('favorites.html')) {
+  init();
+}

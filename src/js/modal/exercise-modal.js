@@ -1,5 +1,9 @@
 import { getExerciseById } from '../../services/apiServices.js';
-import { addFavouritesToStorage, isFavouritesExercise, removeFavouritesFromStorage } from '../favourites.js';
+import {
+  addFavouritesToStorage,
+  isFavouritesExercise,
+  removeFavouritesFromStorage,
+} from '../favourites.js';
 import iziToast from 'izitoast';
 import { RatingModal } from './raiting-modal.js';
 
@@ -39,7 +43,6 @@ export class ExerciseModal {
       this.modalOverlay.addEventListener('click', this.handleOverlayClick);
       window.addEventListener('keydown', this.handleEscKey);
       this.closeBtn.addEventListener('click', this.handleClose);
-
     } catch (error) {
       iziToast.error({
         title: 'Request exercise Error',
@@ -48,13 +51,13 @@ export class ExerciseModal {
       });
 
       console.error(error);
-      this.modalBody.innerHTML = '<p class="error">Failed to load exercise. Try again later.</p>';
+      this.modalBody.innerHTML =
+        '<p class="error">Failed to load exercise. Try again later.</p>';
     }
   }
 
   close() {
     this.modalOverlay.classList.remove('is-open');
-    // this.modalBody.innerHTML = '';
     this.exercise = null;
     this.isFavorite = false;
     this.isRatingOpen = false;
@@ -73,7 +76,9 @@ export class ExerciseModal {
     const favoritesBtn = this.modal.querySelector('.favorites-btn');
     const rateBtn = this.modal.querySelector('.rate-btn');
 
-    favoritesBtn.addEventListener('click', () => this.toggleFavorite(favoritesBtn));
+    favoritesBtn.addEventListener('click', () =>
+      this.toggleFavorite(favoritesBtn)
+    );
     rateBtn.addEventListener('click', () => {
       this.ratingModal.open(this.exercise._id);
       this.isRatingOpen = true;
@@ -97,7 +102,9 @@ export class ExerciseModal {
         ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       </span>
       <svg class="icon-heart" height="18" width="20">
-        <use href="../img/icons.svg#${this.isFavorite ? 'icon-trash' : 'icon-heart'}"></use>
+        <use href="../img/icons.svg#${
+          this.isFavorite ? 'icon-trash' : 'icon-heart'
+        }"></use>
       </svg>
     `;
   }
@@ -108,18 +115,26 @@ export class ExerciseModal {
     return `
     <div class="rating" style="--fill: ${fillPercent}%;">
       <div class="rating-bg">
-        ${[...Array(5)].map(() => `
+        ${[...Array(5)]
+          .map(
+            () => `
           <svg class="star" width="18" height="18">
             <use href="../img/icons.svg#icon-Star"></use>
           </svg>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
       <div class="rating-fill">
-        ${[...Array(5)].map(() => `
+        ${[...Array(5)]
+          .map(
+            () => `
           <svg class="star" width="18" height="18">
             <use href="../img/icons.svg#icon-Star"></use>
           </svg>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
     </div>
   `;
@@ -129,7 +144,11 @@ export class ExerciseModal {
     const ex = this.exercise;
     return `
       <div class="exercise-details">
-        ${ex.gifUrl ? `<img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">` : ''}
+        ${
+          ex.gifUrl
+            ? `<img src="${ex.gifUrl}" alt="${ex.name}" class="exercise-img">`
+            : ''
+        }
         <div class="exercise-content">
           <div>
             <h2 class="exercise-title">${ex.name}</h2>
@@ -151,16 +170,24 @@ export class ExerciseModal {
           </div>
 
           <div class="exercise-buttons">
-            <button type="button" class="favorites-btn primary-btn" data-id="${ex._id}">
+            <button type="button" class="favorites-btn primary-btn" data-id="${
+              ex._id
+            }">
               <span class="favorites-btn-text">
-                ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                ${
+                  this.isFavorite ? 'Remove from favorites' : 'Add to favorites'
+                }
               </span>
               <svg class="icon-heart" height="18" width="20">
-                <use href="../img/icons.svg#${this.isFavorite ? 'icon-trash' : 'icon-heart'}"></use>
+                <use href="../img/icons.svg#${
+                  this.isFavorite ? 'icon-trash' : 'icon-heart'
+                }"></use>
               </svg>
             </button>
             
-            <button type="button" class="rate-btn" data-id="${ex._id}">Give a rating</button>
+            <button type="button" class="rate-btn" data-id="${
+              ex._id
+            }">Give a rating</button>
           </div>
         </div>
       </div>
@@ -196,7 +223,7 @@ export class ExerciseModal {
     } else {
       this.close();
     }
-  };
+  }
 
   createSkeletonMarkup() {
     return `
@@ -206,11 +233,15 @@ export class ExerciseModal {
         <div class="skeleton-title"></div>
         <div class="skeleton-rate"></div>
         <ul class="exercise-info">
-          ${[...Array(5)].map(() => `
+          ${[...Array(5)]
+            .map(
+              () => `
             <li class="skeleton-info-item">
               <div class="skeleton-line"></div>
             </li>
-          `).join('')}
+          `
+            )
+            .join('')}
         </ul>
         <div class="skeleton-description"></div>
         <div class="exercise-buttons">
@@ -221,7 +252,4 @@ export class ExerciseModal {
     </div>
   `;
   }
-
 }
-
-

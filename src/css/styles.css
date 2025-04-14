@@ -15,7 +15,7 @@
 :root {
   --white: #ffffff;
   --offwhite: #f4f4f4;
-  --light-gray: #ddd;
+  --light-gray: rgba(244, 244, 244, 0.6);
   --text-dark: #333;
   --quote-text: #d4d4d4;
   --dark-hover: #444;
@@ -26,6 +26,8 @@
   --input-border-focus: #888;
   --input-text: #333;
   --placeholder-color: #999;
+
+  --quote-text: #d4d4d4;
   --search-height: 40px;
   --search-border-radius: 20px;
   --button-color: #333;
@@ -38,9 +40,11 @@
   --color-border-light: rgba(36, 36, 36, 0.1);
 }
 
-/* body {
+body {
   overflow-y: scroll;
-} */
+  scrollbar-gutter: stable both-edges;
+  font-size: 14px;
+}
 
 a {
   color: currentcolor;

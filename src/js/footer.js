@@ -1,8 +1,6 @@
 const form = document.querySelector('.subscribe-form');
 const input = form.querySelector('input');
-const toast = document.createElement('div');
-toast.className = 'toast';
-document.body.appendChild(toast);
+import iziToast from 'izitoast';
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
@@ -14,21 +12,28 @@ form.addEventListener('submit', async e => {
   }
 
   try {
-    const response = await fetch('https://your-energy.b.goit.study/api/subscription', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-    });
+    const response = await fetch(
+      'https://your-energy.b.goit.study/api/subscription',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      }
+    );
 
     if (!response.ok) throw new Error('Something went wrong');
     const data = await response.json();
 
-    toast.textContent = data.message;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
+    iziToast.success({
+      title: 'Subscription Success',
+      message: data.message,
+      position: 'topRight',
+    });
   } catch (error) {
-    toast.textContent = 'Failed to subscribe. Please try again.';
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
+    iziToast.error({
+      title: 'Subscription Error',
+      message: 'Failed to subscribe. Please try again.',
+      position: 'topRight',
+    });
   }
 });

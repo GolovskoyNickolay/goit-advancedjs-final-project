@@ -55,7 +55,7 @@
 .exercise-img {
   width: 295px;
   height: 258px;
-  background-color: var(--offwhite);;
+  background-color: var(--offwhite);
   border-radius: 12px;
   flex-shrink: 0;
 }
@@ -114,7 +114,7 @@
 }
 
 .exercise-description {
-  color: rgba(244, 244, 244, 0.6);
+  color: var(--light-gray);
 }
 
 .exercise-buttons {
@@ -214,7 +214,7 @@
 .rating-modal-title {
   font-size: 12px;
   line-height: 18px;
-  color: rgba(244, 244, 244, 0.40);
+  color: rgba(244, 244, 244, 0.4);
   margin-bottom: 11px;
 }
 
@@ -264,7 +264,7 @@
 }
 
 .rating-input::placeholder {
-  color: rgba(244, 244, 244, 0.60);
+  color: rgba(244, 244, 244, 0.6);
 }
 
 .rating-input-email {
@@ -282,7 +282,7 @@
 
 @media only screen and (min-width: 768px) {
   .rating-modal {
-    width: 366px
+    width: 366px;
   }
 
   .rating-options-wrapper {
