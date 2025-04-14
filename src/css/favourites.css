@@ -2,6 +2,12 @@
   margin-top: 20px;
 }
 
+
+#favourites {
+  padding-top: 40px;
+}
+
+
 @media (min-width: 768px) {
   #main-content-favourites {
     margin-top: 64px;
@@ -69,6 +75,9 @@
   .main-content-favourites {
     padding-bottom: 100px;
   }
+  #favourites {
+    padding-top: 64px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -94,6 +103,7 @@
   }
   #favourites {
     width: 100%;
+    padding-top: 0;
   }
   .exercise-list {
     height: 520px;
