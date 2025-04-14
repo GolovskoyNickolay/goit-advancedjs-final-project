@@ -68,6 +68,12 @@
   }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .filter-wrapper:has(.search-form.invisiable) {
+    flex-direction: row-reverse;
+  }
+}
+
 @media only screen and (min-width: 1440px) {
   .filter-wrapper {
     gap: 30px;
@@ -87,11 +93,19 @@
 @media only screen and (min-width: 768px) {
   .filters-list {
     height: 32px;
+
+    align-items: center;
   }
 }
 
 .filters-item {
   position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .filters-item {
+    font-size: 16px;
+  }
 }
 
 .filters-item:hover {
