@@ -97,7 +97,9 @@ function init() {
 }
 
 if (window.location.pathname.includes('favorites.html')) {
-  modalInstance = new ExerciseModal();
+  setTimeout(()=>{
+    modalInstance = new ExerciseModal();
+  });
   setItemToLocalStorage = function (key, value) {
     localStorage.setItem(key, value);
 
