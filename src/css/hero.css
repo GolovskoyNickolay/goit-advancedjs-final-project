@@ -113,6 +113,7 @@
   .hero-tag-img {
     margin-bottom: 32px;
     margin-left: auto;
+    border-radius: 20px;
   }
 
   .hero-tags.bottom {

@@ -24,7 +24,6 @@
 }
 
 .search-form.invisiable {
-  /* display: none; */
   pointer-events: none;
   height: 0px;
   border: 0px;
