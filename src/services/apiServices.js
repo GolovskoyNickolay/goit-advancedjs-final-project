@@ -29,7 +29,8 @@ export async function getExerciseById(id) {
  * @returns {Promise<void>} A promise that resolves once the rating has been updated.
  */
 export async function updateExerciseRating(id, ratingData) {
-  await api.patch(`/exercises/${id}/rating`, ratingData);
+  const { data } = api.patch(`/exercises/${id}/rating`, ratingData);
+  return data;
 }
 
 /**
