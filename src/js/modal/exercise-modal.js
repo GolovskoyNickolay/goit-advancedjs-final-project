@@ -102,7 +102,7 @@ export class ExerciseModal {
         ${this.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       </span>
       <svg class="icon-heart" height="18" width="20">
-        <use href="../img/icons.svg#${
+        <use href="./img/icons.svg#${
           this.isFavorite ? 'icon-trash' : 'icon-heart'
         }"></use>
       </svg>
@@ -119,7 +119,7 @@ export class ExerciseModal {
           .map(
             () => `
           <svg class="star" width="18" height="18">
-            <use href="../img/icons.svg#icon-Star"></use>
+            <use href="./img/icons.svg#icon-Star"></use>
           </svg>
         `
           )
@@ -130,7 +130,7 @@ export class ExerciseModal {
           .map(
             () => `
           <svg class="star" width="18" height="18">
-            <use href="../img/icons.svg#icon-Star"></use>
+            <use href="./img/icons.svg#icon-Star"></use>
           </svg>
         `
           )
@@ -179,7 +179,7 @@ export class ExerciseModal {
                 }
               </span>
               <svg class="icon-heart" height="18" width="20">
-                <use href="../img/icons.svg#${
+                <use href="./img/icons.svg#${
                   this.isFavorite ? 'icon-trash' : 'icon-heart'
                 }"></use>
               </svg>
