@@ -47,7 +47,6 @@
     padding: 8px 34px;
     border-radius: 60px;
     background-color: var(--dark);
-    box-shadow: var(--box-shadow-base);
   }
 
   .nav .menu-item {
@@ -105,25 +104,25 @@
   }
 
   .nav .social-item svg {
-    fill: var(--dark);
+    fill: var(--dark-80);
     transition-duration: var(--transition-duration-base);
     transition-timing-function: var(--transition-ease-standard);
     transition-property: fill;
   }
 
   .nav .social-item:hover {
-    background-color: var(--dark);
+    background-color: var(--dark-80);
   }
 
   .nav .social-item:hover svg {
-    fill: var(--white);
+    fill: var(--offwhite);
   }
 
 }
 
 @media screen and (min-width: 1440px) {
   .header {
-    padding-top: 28px;
+    padding-top: 32px;
   }
 
   .nav .menu-items {

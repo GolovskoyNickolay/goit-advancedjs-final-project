@@ -31,7 +31,7 @@ const onWheel = () => {
   }, 100);
 };
 
-window.addEventListener('scroll', onScroll);
+// window.addEventListener('scroll', onScroll);
 document.addEventListener('wheel', onWheel);
 
 const menuLinks = document.querySelectorAll('.menu-items.router .menu-item a');

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import './css/iziToast.css'
 
 const api = axios.create({
   baseURL: 'https://your-energy.b.goit.study/api',
