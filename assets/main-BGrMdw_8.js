@@ -1,5 +1,5 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/search-DstwVgCZ.js","assets/favourites-BeGUVPg0.js","assets/vendor-BAoYjrW1.js","assets/vendor-D_nxXpU-.css","assets/pagination-CO-czKSh.js"])))=>i.map(i=>d[i]);
-var y=Object.defineProperty;var f=(r,e,t)=>e in r?y(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var c=(r,e,t)=>f(r,typeof e!="symbol"?e+"":e,t);import{i as x,_ as u,s as g,g as E,c as L,f as b,I as d,u as k,a as S,b as $,r as w,d as M,E as F}from"./favourites-BeGUVPg0.js";/* empty css               */import{i as h}from"./vendor-BAoYjrW1.js";class m{constructor(e,t,i){c(this,"onClick",({target:e})=>{e.nodeName==="LI"&&(this.filter=e.dataset.filter,this.setActiveFilter(this.filter),this.exerciseInstance.hide(),this.render(),this.setActivePath(),g.new("category",this.filter))});c(this,"paginationCategoryCallback",e=>{this.render(Number(e))});c(this,"cardOnClick",({target:e})=>{const t=b(e,"LI","UL");if(!t)return;this.hide();const{exercise:i}=t.dataset;this.exerciseInstance.init(this.filter,i),this.setActivePath(i),g.set("exercise",i)});this.exerciseInstance=t,this.paginationInstance=i,this.filterList=document.body.querySelector(".filters-list"),this.filterList.addEventListener("click",this.onClick),this.items=Array.from(this.filterList.querySelectorAll("li")),this.categoryList=document.body.querySelector(".category-list"),this.categoryList.addEventListener("click",this.cardOnClick),this.filter="Muscles",this.path={start:document.querySelector(".filter-path-start"),part:document.querySelector(".filter-path-part")},this.limit=x()?9:12,this.errorElement=document.body.querySelector("[data-categoryError]"),e&&async function(s){const a=await u(()=>import("./search-DstwVgCZ.js"),__vite__mapDeps([0,1,2,3]));s.searchForm=a.default}(this)}setActiveFilter(e){this.items.forEach(t=>{t.dataset.filter===e?t.classList.add("active"):t.classList.remove("active")})}setActivePath(e=""){e?this.path.start.innerHTML="Exercises /":this.path.start.innerHTML="Exercises",this.path.part.innerHTML=e}async render(e=1){var t;try{const i=await E({filter:this.filter,limit:this.limit,page:e});i.results.length?(this.errorHide(),this.categoryList.innerHTML=i.results.map(m.categoryMarkup).join("")):(this.categoryList.innerHTML="",this.errorShow()),this.paginationInstance.render(i.totalPages,i.page),this.paginationInstance.callback=this.paginationCategoryCallback,(t=this.searchForm)==null||t.hide(),this.show()}catch{iziToast.error({title:"Unexpected error",message:"Try to refresh the page",position:"topRight"})}}static categoryMarkup({imgURL:e,name:t,filter:i}){return`<li class="category-card" data-muscle="${i}" data-exercise="${t}">
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/search-BZ04UKGp.js","assets/favourites-8egNjukA.js","assets/vendor-BAoYjrW1.js","assets/vendor-D_nxXpU-.css","assets/pagination-DubV0k8c.js"])))=>i.map(i=>d[i]);
+var y=Object.defineProperty;var f=(r,e,t)=>e in r?y(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var c=(r,e,t)=>f(r,typeof e!="symbol"?e+"":e,t);import{i as x,_ as u,s as g,g as E,c as L,f as b,I as d,u as k,a as S,b as $,r as w,d as M,E as F}from"./favourites-8egNjukA.js";/* empty css               */import{i as h}from"./vendor-BAoYjrW1.js";class m{constructor(e,t,i){c(this,"onClick",({target:e})=>{e.nodeName==="LI"&&(this.filter=e.dataset.filter,this.setActiveFilter(this.filter),this.exerciseInstance.hide(),this.render(),this.setActivePath(),g.new("category",this.filter))});c(this,"paginationCategoryCallback",e=>{this.render(Number(e))});c(this,"cardOnClick",({target:e})=>{const t=b(e,"LI","UL");if(!t)return;this.hide();const{exercise:i}=t.dataset;this.exerciseInstance.init(this.filter,i),this.setActivePath(i),g.set("exercise",i)});this.exerciseInstance=t,this.paginationInstance=i,this.filterList=document.body.querySelector(".filters-list"),this.filterList.addEventListener("click",this.onClick),this.items=Array.from(this.filterList.querySelectorAll("li")),this.categoryList=document.body.querySelector(".category-list"),this.categoryList.addEventListener("click",this.cardOnClick),this.filter="Muscles",this.path={start:document.querySelector(".filter-path-start"),part:document.querySelector(".filter-path-part")},this.limit=x()?9:12,this.errorElement=document.body.querySelector("[data-categoryError]"),e&&async function(s){const a=await u(()=>import("./search-BZ04UKGp.js"),__vite__mapDeps([0,1,2,3]));s.searchForm=a.default}(this)}setActiveFilter(e){this.items.forEach(t=>{t.dataset.filter===e?t.classList.add("active"):t.classList.remove("active")})}setActivePath(e=""){e?this.path.start.innerHTML="Exercises /":this.path.start.innerHTML="Exercises",this.path.part.innerHTML=e}async render(e=1){var t;try{const i=await E({filter:this.filter,limit:this.limit,page:e});i.results.length?(this.errorHide(),this.categoryList.innerHTML=i.results.map(m.categoryMarkup).join("")):(this.categoryList.innerHTML="",this.errorShow()),this.paginationInstance.render(i.totalPages,i.page),this.paginationInstance.callback=this.paginationCategoryCallback,(t=this.searchForm)==null||t.hide(),this.show()}catch{iziToast.error({title:"Unexpected error",message:"Try to refresh the page",position:"topRight"})}}static categoryMarkup({imgURL:e,name:t,filter:i}){return`<li class="category-card" data-muscle="${i}" data-exercise="${t}">
           <img
             src="${e}"
             alt="Image shows exercise ${t}"
@@ -17,7 +17,7 @@ var y=Object.defineProperty;var f=(r,e,t)=>e in r?y(r,e,{enumerable:!0,configura
             <input type="radio" id="star${e}" name="rating" value="${e}" />
             <label for="star${e}" class="rating-label">
               <svg class="rating-star" width="24" height="24">
-                <use href="../img/icons.svg#icon-Star"></use>
+                <use href="./img/icons.svg#icon-Star"></use>
               </svg>
             </label>
           `).join("")}
@@ -52,21 +52,21 @@ var y=Object.defineProperty;var f=(r,e,t)=>e in r?y(r,e,{enumerable:!0,configura
         ${this.isFavorite?"Remove from favorites":"Add to favorites"}
       </span>
       <svg class="icon-heart" height="18" width="20">
-        <use href="../img/icons.svg#${this.isFavorite?"icon-trash":"icon-heart"}"></use>
+        <use href="./img/icons.svg#${this.isFavorite?"icon-trash":"icon-heart"}"></use>
       </svg>
     `}createStars(e){return`
     <div class="rating" style="--fill: ${e/5*100}%;">
       <div class="rating-bg">
         ${[...Array(5)].map(()=>`
           <svg class="star" width="18" height="18">
-            <use href="../img/icons.svg#icon-Star"></use>
+            <use href="./img/icons.svg#icon-Star"></use>
           </svg>
         `).join("")}
       </div>
       <div class="rating-fill">
         ${[...Array(5)].map(()=>`
           <svg class="star" width="18" height="18">
-            <use href="../img/icons.svg#icon-Star"></use>
+            <use href="./img/icons.svg#icon-Star"></use>
           </svg>
         `).join("")}
       </div>
@@ -100,7 +100,7 @@ var y=Object.defineProperty;var f=(r,e,t)=>e in r?y(r,e,{enumerable:!0,configura
                 ${this.isFavorite?"Remove from favorites":"Add to favorites"}
               </span>
               <svg class="icon-heart" height="18" width="20">
-                <use href="../img/icons.svg#${this.isFavorite?"icon-trash":"icon-heart"}"></use>
+                <use href="./img/icons.svg#${this.isFavorite?"icon-trash":"icon-heart"}"></use>
               </svg>
             </button>
             
@@ -128,5 +128,5 @@ var y=Object.defineProperty;var f=(r,e,t)=>e in r?y(r,e,{enumerable:!0,configura
         </div>
       </div>
     </div>
-  `}}async function C(){const e=(await u(()=>import("./pagination-CO-czKSh.js"),__vite__mapDeps([4,1,2,3]))).default,t=!0,i=new O,s=new F(t,e,i),a=new m(t,s,e),{category:n,exercise:o,keyword:l,page:v}=Object.fromEntries(g.initParams.entries());if(n&&o)setTimeout(()=>{s.init(n,o,l,v),a.setActiveFilter(n),a.setActivePath(o)},50);else if(n){const p=["Muscles","Body parts","Equipment"].indexOf(n);a.onClick({target:document.querySelectorAll(".filters-list .filters-item")[p]})}else a.onClick({target:document.querySelector(".filters-list .filters-item")})}C();
-//# sourceMappingURL=main-D-sL0eCK.js.map
+  `}}async function C(){const e=(await u(()=>import("./pagination-DubV0k8c.js"),__vite__mapDeps([4,1,2,3]))).default,t=!0,i=new O,s=new F(t,e,i),a=new m(t,s,e),{category:n,exercise:o,keyword:l,page:v}=Object.fromEntries(g.initParams.entries());if(n&&o)setTimeout(()=>{s.init(n,o,l,v),a.setActiveFilter(n),a.setActivePath(o)},50);else if(n){const p=["Muscles","Body parts","Equipment"].indexOf(n);a.onClick({target:document.querySelectorAll(".filters-list .filters-item")[p]})}else a.onClick({target:document.querySelector(".filters-list .filters-item")})}C();
+//# sourceMappingURL=main-BGrMdw_8.js.map
