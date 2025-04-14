@@ -6,28 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Energy</title>
     <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/vendor-BAoYjrW1.js"></script>
-    <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/exercise-modal-GT1yHURM.js"></script>
+    <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/exercise-modal-re-UHY2l.js"></script>
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/exercise-modal-2_DSVi7X.css">
     <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/vendor-D_nxXpU-.css">
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/favorites-B8x4LxoF.css">
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/styles-DXs41hBw.css">
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/favorites-Bmb39_pT.css">
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/styles-DXbtXj2q.css">
   </head>
   <body>
     <header class="header">
   <div class="container">
     <nav class="nav">
-      <a class="logo" href="index.html" rel="noopener noreferrer" aria-label="YOUR ENERGY">
+      <a class="logo" href="/" rel="noopener noreferrer" aria-label="YOUR ENERGY">
         <svg width="132" height="24">
           <use href="/goit-advancedjs-final-project/assets/icons-DMAIjxcC.svg#logo"></use>
         </svg>
       </a>
-      <ul class="menu-items router">
-        <li class="menu-item active">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="menu-item">
-          <a href="favorites.html">Favorites</a>
-        </li>
-      </ul>
+      <div class="menu-items-wrap">
+        <ul class="menu-items router">
+          <li class="menu-item active">
+            <a href="/">Home</a>
+          </li>
+          <li class="menu-item">
+            <a href="favorites.html">Favorites</a>
+          </li>
+        </ul>
+      </div>
       <ul class="socials">
         <li class="social-item">
           <a href="https://www.facebook.com/goITclub/" rel="noopener noreferrer" target="_blank" aria-label="Link to Facebook">
@@ -134,7 +137,8 @@
       </div>
     </div>
 
-    <section class="sidebar-container">
+    <div class="main-content-favourites">
+      <section class="sidebar-container-favoutite">
   <div class="sidebar-quote-container">
     <div class="sidebar-quote-ranner-icon-container">
       <svg
@@ -165,25 +169,6 @@
       <div class="sidebar-quote-author"></div>
     </div>
   </div>
-  <picture class="fav-picture">
-    <source
-      media="(min-width: 1440px)"
-      srcset="/goit-advancedjs-final-project/assets/sidebar-img-desktop@1x-C6AuElxX.jpg 1x, /goit-advancedjs-final-project/assets/sidebar-img-desktop@2x-DOsQT8wB.jpg 2x"
-    />
-    <source
-      media="(min-width: 768px)"
-      srcset="/goit-advancedjs-final-project/assets/sidebar-img-tablet@1x-C3B382Rz.jpg 1x, /goit-advancedjs-final-project/assets/sidebar-img-tablet@2x-CSrug3GI.jpg 2x"
-    />
-    <img
-      class="sidebar-quote-image"
-      width="335"
-      height="242"
-      srcset="/goit-advancedjs-final-project/assets/sidebar-img-mobile@1x-Bf__UmbA.jpg 1x, /goit-advancedjs-final-project/assets/sidebar-img-mobile@2x-BOfMosqN.jpg 2x"
-      src="/goit-advancedjs-final-project/assets/sidebar-img-mobile@1x-Bf__UmbA.jpg"
-      alt="sidebar-container"
-      loading="lazy"
-    />
-  </picture>
   <div class="sidebar-sports-info">
     <div class="sidebar-quote-dumbbell-svg-container">
       <svg
@@ -211,12 +196,27 @@
       </p>
     </div>
   </div>
+  <picture class="fav-picture">
+    <source
+      media="(min-width: 1440px)"
+      srcset="/goit-advancedjs-final-project/assets/favorites-des-1x-Bb0oo0j4.jpg 1x, /goit-advancedjs-final-project/assets/favorites-des-2x-DhKvZ5r2.jpg 2x"
+    />
+    <source
+      media="(min-width: 768px)"
+      srcset="/goit-advancedjs-final-project/assets/favorites-tab-1x-DYsPH-Wg.jpg 1x, /goit-advancedjs-final-project/assets/favorites-tab-2x-C8DXSBif.jpg 2x"
+    />
+    <img
+      class="sidebar-quote-image"
+      width="335"
+      height="242"
+      srcset="/goit-advancedjs-final-project/assets/favorites-mob-1x-B9N3fwCD.jpg 1x, /goit-advancedjs-final-project/assets/favorites-mob-2x-C5vXJpvL.jpg 2x"
+      src="/goit-advancedjs-final-project/assets/favorites-mob-1x-B9N3fwCD.jpg"
+      alt="sidebar-container"
+      loading="lazy"
+    />
+  </picture>
 </section>
 
-
-    <div class="main-content-favourites">
-      <aside></aside>
-      <!-- Filters list-->
       <section id="favourites"></section>
     </div>
   </div>
