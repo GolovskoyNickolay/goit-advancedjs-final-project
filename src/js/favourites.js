@@ -1,6 +1,6 @@
 import { NAME_OF_STORAGE, TEXT_IF_EMPTY } from './main-section/constants';
-import Exercise from './main-section/exercise';
-import { ExerciseModal } from './modal/exercise-modal';
+import Exercise from './main-section/exercise.js';
+import { ExerciseModal } from './modal/exercise-modal.js';
 
 let modalInstance;
 export function isFavouritesExercise(id) {
