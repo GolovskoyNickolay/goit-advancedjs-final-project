@@ -39,9 +39,9 @@ form?.addEventListener('submit', async e => {
       position: 'topRight',
     });
   } catch (error) {
-    iziToast.error({
-      title: 'Subscription Error',
-      message: 'Failed to subscribe. Please try again.',
+    iziToast.warning({
+      title: 'Oops!',
+      message: 'Looks like you\'re already subscribed!',
       position: 'topRight',
     });
   }
