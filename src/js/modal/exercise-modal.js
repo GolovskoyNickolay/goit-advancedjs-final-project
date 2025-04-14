@@ -58,7 +58,6 @@ export class ExerciseModal {
 
   close() {
     this.modalOverlay.classList.remove('is-open');
-    // this.modalBody.innerHTML = '';
     this.exercise = null;
     this.isFavorite = false;
     this.isRatingOpen = false;
