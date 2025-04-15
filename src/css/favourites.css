@@ -56,11 +56,13 @@
   padding: 20px 8px 0;
   line-height: 18px;
   text-align: center;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 @media only screen and (min-width: 768px) {
   .sidebar-container-favoutite {
-    /*grid-template-columns: repeat(2, 1fr);*/
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 140px;
   }
   .sidebar-container-favoutite .sidebar-quote-container {
@@ -71,6 +73,8 @@
   }
   .favourites-not-found {
     padding: 132px 75px 90px;
+    font-size: 18px;
+    line-height: 24px;
   }
   .main-content-favourites {
     padding-bottom: 100px;
@@ -81,7 +85,7 @@
 }
 
 @media only screen and (min-width: 1440px) {
-
+  
   .main-content-favourites {
     padding-bottom: 63px;
     display: grid;
@@ -103,15 +107,17 @@
   }
   #favourites {
     width: 100%;
+    height: 100%;
     padding-top: 0;
   }
   .exercise-list {
-    height: 520px;
+    max-height: 520px;
     overflow-y: auto;
     padding-top: 16px;
     margin-top: -16px;
     padding-right: 16px;
     padding-left: 32px;
     margin-right: -16px;
+    padding-bottom: 30px;
   }
 }

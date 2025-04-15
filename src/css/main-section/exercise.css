@@ -228,6 +228,15 @@
   white-space: nowrap;
 }
 
+.workout-remove-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -16px;
+}
+
 .workout-remove-btn:hover {
   color: red;
 }

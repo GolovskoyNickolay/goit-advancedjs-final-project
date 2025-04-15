@@ -14,6 +14,7 @@ export class ExerciseModal {
     this.modal = document.getElementById('exerciseModal');
     this.modalBody = document.querySelector('.modal-body');
     this.closeBtn = this.modal.querySelector('.modal-close');
+    this.scrollbarWidth = this.getScrollbarWidth()
 
     this.ratingModal = new RatingModal(this.modalBody, this.render.bind(this));
 
@@ -27,6 +28,8 @@ export class ExerciseModal {
   }
 
   async open(event) {
+    document.querySelector(".menu-items-wrap").style = `padding-right: ${this.scrollbarWidth}`;
+    document.body.style = `overflow: hidden; margin-right: ${this.scrollbarWidth}`
     const card = event.target.closest('.workout-card');
     if (!card) return;
 
@@ -58,6 +61,9 @@ export class ExerciseModal {
   }
 
   close() {
+    document.body.style = ""
+    document.querySelector(".menu-items-wrap").style = ""
+
     this.modalOverlay.classList.remove('is-open');
     this.exercise = null;
     this.isFavorite = false;
@@ -139,6 +145,10 @@ export class ExerciseModal {
       </div>
     </div>
   `;
+  }
+
+  getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth + "px";
   }
 
   createExerciseMarkup() {
