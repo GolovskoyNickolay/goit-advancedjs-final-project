@@ -37,7 +37,9 @@ document.addEventListener('wheel', onWheel);
 const menuLinks = document.querySelectorAll('.menu-items.router .menu-item a');
 
 menuLinks.forEach((link) => {
-  if (link.href === window.location.href || window.location.pathname.endsWith(link.getAttribute('href'))) {
+  console.log(link.href, window.location.origin);
+  
+  if (link.href === window.location.origin + window.location.pathname) {
     link.parentElement.classList.add('active');
   } else {
     link.parentElement.classList.remove('active');

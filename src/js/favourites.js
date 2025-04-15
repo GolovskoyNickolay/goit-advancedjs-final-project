@@ -1,8 +1,5 @@
-import { NAME_OF_STORAGE, TEXT_IF_EMPTY } from './main-section/constants';
-import Exercise from './main-section/exercise.js';
-import { ExerciseModal } from './modal/exercise-modal.js';
+import { NAME_OF_STORAGE } from './main-section/constants';
 
-let modalInstance;
 export function isFavouritesExercise(id) {
   const exercises = getExercisesFromStorage(NAME_OF_STORAGE);
 
@@ -29,82 +26,15 @@ let setItemToLocalStorage = function (key, value) {
   localStorage.setItem(key, value);
 };
 
-const refs = {
-  list: document.getElementById('favourites'),
-};
-
 /**
  * @param {string} name
  * @returns {object} Array of exercises from local storage.
  */
-function getExercisesFromStorage(name) {
+export function getExercisesFromStorage(name) {
   if (!localStorage) {
     console.error('Local storage is not supported in this browser.');
     return {};
   }
   const exercises = localStorage.getItem(name);
   return exercises ? JSON.parse(exercises) : {};
-}
-
-function renderList() {
-  const exercisesObj = getExercisesFromStorage(NAME_OF_STORAGE);
-  const exercises = Object.values(exercisesObj);
-
-  if (!Array.isArray(exercises)) {
-    console.error('Invalid exercises data:', exercises);
-    renderEmpty();
-    return;
-  }
-
-  if (exercises.length === 0) {
-    renderEmpty();
-    return;
-  }
-
-  const list = document.createElement('ul');
-  list.classList.add('exercise-list');
-  list.innerHTML = exercises
-    .map(el => Exercise.exerciseMarkup(el, true))
-    .join('');
-  refs.list.innerHTML = '';
-  refs.list.appendChild(list);
-
-  list.addEventListener('click', event => {
-    if (
-      event.target.closest('button') &&
-      event.target.closest('button').classList.has('workout-remove-btn')
-    )
-      return;
-
-    modalInstance.open(event);
-  });
-}
-
-function renderEmpty() {
-  refs.list.innerHTML = `<div class="favourites-not-found"><p>${TEXT_IF_EMPTY}</p></div>`;
-}
-
-function init() {
-  document.addEventListener('DOMContentLoaded', () => {
-    renderList();
-  });
-
-  document.removeFavourite = function (element) {
-    const id = element.closest('[data-id]').dataset.id;
-    removeFavouritesFromStorage(id);
-    renderList();
-  };
-}
-
-if (window.location.pathname.includes('favorites.html')) {
-  setTimeout(()=>{
-    modalInstance = new ExerciseModal();
-  });
-  setItemToLocalStorage = function (key, value) {
-    localStorage.setItem(key, value);
-
-    renderList();
-  };
-
-  init();
 }
